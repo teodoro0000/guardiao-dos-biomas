@@ -1,8 +1,67 @@
-[gd_scene load_steps=3 format=3 uid="uid://nm82sifvd23i"]
+[gd_scene load_steps=11 format=3 uid="uid://nm82sifvd23i"]
 
-[ext_resource type="Script" uid="uid://c88qh71nhx6m4" path="res://scripts/level_end.gd" id="1_y82ty"]
+[ext_resource type="Script" path="res://scripts/level_end.gd" id="1_y82ty"]
+[ext_resource type="Texture2D" path="res://sprites/Main Characters/Appearing (96x96).png" id="2_app"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4bc8j"]
+size = Vector2(20, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p0"]
+atlas = ExtResource("2_app")
+region = Rect2(0, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p1"]
+atlas = ExtResource("2_app")
+region = Rect2(96, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p2"]
+atlas = ExtResource("2_app")
+region = Rect2(192, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p3"]
+atlas = ExtResource("2_app")
+region = Rect2(288, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p4"]
+atlas = ExtResource("2_app")
+region = Rect2(384, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p5"]
+atlas = ExtResource("2_app")
+region = Rect2(480, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p6"]
+atlas = ExtResource("2_app")
+region = Rect2(576, 0, 96, 96)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_portal"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p6")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
 
 [node name="LevelEnd" type="Area2D"]
 collision_layer = 8
@@ -11,6 +70,22 @@ script = ExtResource("1_y82ty")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_4bc8j")
-debug_color = Color(0, 0.710989, 0.539334, 0.42)
+debug_color = Color(0, 0.71, 0.54, 0.42)
 
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[node name="Portal" type="Node2D" parent="."]
+
+[node name="PortalSprite" type="AnimatedSprite2D" parent="Portal"]
+position = Vector2(0, -8)
+scale = Vector2(0.55, 0.55)
+sprite_frames = SubResource("SpriteFrames_portal")
+animation = &"default"
+autoplay = "default"
+
+[node name="Label" type="Label" parent="Portal"]
+offset_left = -30.0
+offset_top = -42.0
+offset_right = 30.0
+offset_bottom = -32.0
+text = "PORTAL"
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 5

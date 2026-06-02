@@ -30,18 +30,49 @@ enum PlayerState {
 @export var water_acceleration = 200
 @export var water_jump_force = -100
 
-const JUMP_VELOCITY = -300.0
+@export var jump_velocity: float = -300.0
 
 var jump_count = 0
 @export var max_jump_count = 2
 var direction = 0
 var status: PlayerState
-		
+var carried_trash: Node = null
+
+const PROJECTILE = preload("res://entities/player_projectile.tscn")
+const ATTACK_COOLDOWN := 0.35
+var _facing: int = 1
+var _attack_t: float = 0.0
+
 func _ready() -> void:
+	_apply_character_modifiers()
+	_apply_character_sprite()
+	_apply_checkpoint_respawn()
 	go_to_idle_state()
 
+func _apply_checkpoint_respawn() -> void:
+	var lvl := GameState.current_level_id
+	if lvl == "" or not GameState.has_checkpoint(lvl):
+		return
+	global_position = GameState.get_checkpoint(lvl)
+
+func _apply_character_sprite() -> void:
+	var sf: SpriteFrames = GameState.get_character_sprite_frames(GameState.selected_character)
+	if sf == null:
+		return
+	anim.sprite_frames = sf
+	# Pixel Adventure sprites are 32x32 vs original Penguin 16x16.
+	# Offset by -8 so feet align with the existing 16x16 collider bottom.
+	anim.offset = Vector2(0, -8)
+
+func _apply_character_modifiers() -> void:
+	max_speed *= GameState.get_character_modifier("max_speed_mul", 1.0)
+	jump_velocity *= GameState.get_character_modifier("jump_velocity_mul", 1.0)
+
 func _physics_process(delta: float) -> void:
-	
+	_attack_t = max(0.0, _attack_t - delta)
+	if status != PlayerState.hurt and Input.is_action_just_pressed("attack") and _attack_t <= 0.0:
+		_fire_projectile()
+
 	match status:
 		PlayerState.idle:
 			idle_state(delta)
@@ -75,8 +106,9 @@ func go_to_walk_state():
 func go_to_jump_state():
 	status = PlayerState.jump
 	anim.play("jump")
-	velocity.y = JUMP_VELOCITY
+	velocity.y = jump_velocity
 	jump_count += 1
+	GameState.play_sfx("double_jump" if jump_count > 1 else "jump")
 	
 func go_to_fall_state():
 	status = PlayerState.fall
@@ -112,11 +144,12 @@ func go_to_swimming_state():
 func go_to_hurt_state():
 	if status == PlayerState.hurt:
 		return
-	
+
 	status = PlayerState.hurt
 	anim.play("hurt")
 	velocity.x = 0
 	reload_timer.start()
+	GameState.play_sfx("hurt")
 
 func idle_state(delta):
 	apply_gravity(delta)
@@ -261,11 +294,22 @@ func apply_gravity(delta):
 	
 func update_direction():
 	direction = Input.get_axis("left", "right")
-	
+
 	if direction < 0:
 		anim.flip_h = true
+		_facing = -1
 	elif direction > 0:
 		anim.flip_h = false
+		_facing = 1
+
+func _fire_projectile() -> void:
+	_attack_t = ATTACK_COOLDOWN
+	var p := PROJECTILE.instantiate()
+	get_parent().add_child(p)
+	p.global_position = global_position + Vector2(_facing * 8.0, -2.0)
+	if p.has_method("set_direction"):
+		p.set_direction(_facing)
+	GameState.play_sfx("attack")
 
 func can_jump() -> bool:
 	return jump_count < max_jump_count
@@ -311,7 +355,26 @@ func hit_lethal_area():
 	go_to_hurt_state()
 
 func _on_reload_timer_timeout() -> void:
-	get_tree().reload_current_scene()
+	if GameState.lose_life():
+		GameState.play_sfx("restart")
+		GameState.reload_current_level()
+	else:
+		GameState.play_sfx("death")
+		GameState.go_to_game_over()
+
+func can_pickup_trash() -> bool:
+	return carried_trash == null
+
+func set_carried_trash(item: Node) -> void:
+	carried_trash = item
+
+func get_carried_trash() -> Node:
+	return carried_trash
+
+func deposit_trash() -> void:
+	if carried_trash and is_instance_valid(carried_trash):
+		carried_trash.queue_free()
+	carried_trash = null
 
 func _on_hitbox_body_exited(body: Node2D) -> void:
 	if body.is_in_group("Water"):

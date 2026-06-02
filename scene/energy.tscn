@@ -1,0 +1,1003 @@
+[gd_scene format=4 uid="uid://bphtdrbadkfca"]
+
+[ext_resource type="Script" path="res://scripts/level.gd" id="0_lvl"]
+[ext_resource type="PackedScene" uid="uid://dods0coll0001" path="res://entities/collectible.tscn" id="0_col"]
+[ext_resource type="PackedScene" uid="uid://b4uyanguafauh" path="res://entities/player.tscn" id="1_pl"]
+[ext_resource type="PackedScene" uid="uid://cdtr6sp6pckop" path="res://entities/camera.tscn" id="2_cam"]
+[ext_resource type="PackedScene" uid="uid://nm82sifvd23i" path="res://entities/level_end.tscn" id="3_end"]
+[ext_resource type="PackedScene" uid="uid://7dkaekrflgga" path="res://entities/moving_platform.tscn" id="4_mp"]
+[ext_resource type="PackedScene" uid="uid://bes2p46skt65p" path="res://entities/skeleton.tscn" id="5_sk"]
+[ext_resource type="PackedScene" uid="uid://dods0boss0001" path="res://entities/boss.tscn" id="6_boss_e"]
+[ext_resource type="PackedScene" uid="uid://dods0check001" path="res://entities/checkpoint.tscn" id="7_cp_e"]
+[ext_resource type="PackedScene" uid="uid://dods0life001" path="res://entities/life_pickup.tscn" id="9_lp_e"]
+[ext_resource type="Texture2D" path="res://sprites/0x72_DungeonTilesetii_v1.7/frames/floor_1.png" id="8_flr_e"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_floor"]
+size = Vector2(72, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_void"]
+size = Vector2(1200, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_end"]
+size = Vector2(20, 192)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wall_e"]
+size = Vector2(24, 600)
+
+[node name="Energy" type="Node2D"]
+script = ExtResource("0_lvl")
+level_id = "energy"
+
+[node name="Background" type="ColorRect" parent="."]
+offset_left = -10.0
+offset_top = -10.0
+offset_right = 620.0
+offset_bottom = 220.0
+color = Color(0.04, 0.05, 0.10, 1.0)
+
+[node name="SkyGradientTop" type="ColorRect" parent="."]
+offset_left = -10.0
+offset_top = -10.0
+offset_right = 620.0
+offset_bottom = 60.0
+color = Color(0.06, 0.04, 0.16, 0.85)
+
+[node name="SkyGradientMid" type="ColorRect" parent="."]
+offset_left = -10.0
+offset_top = 50.0
+offset_right = 620.0
+offset_bottom = 105.0
+color = Color(0.16, 0.10, 0.28, 0.75)
+
+[node name="HorizonGlow" type="ColorRect" parent="."]
+offset_left = -10.0
+offset_top = 95.0
+offset_right = 620.0
+offset_bottom = 130.0
+color = Color(0.98, 0.55, 0.30, 0.32)
+
+[node name="HorizonLine" type="ColorRect" parent="."]
+offset_left = -10.0
+offset_top = 128.0
+offset_right = 620.0
+offset_bottom = 129.0
+color = Color(1.00, 0.78, 0.50, 0.85)
+
+[node name="Moon" type="ColorRect" parent="."]
+offset_left = 480.0
+offset_top = 18.0
+offset_right = 498.0
+offset_bottom = 36.0
+color = Color(0.94, 0.96, 0.86, 0.95)
+
+[node name="MoonHalo" type="ColorRect" parent="."]
+offset_left = 472.0
+offset_top = 10.0
+offset_right = 506.0
+offset_bottom = 44.0
+color = Color(0.78, 0.84, 1.00, 0.12)
+
+[node name="Stars" type="Node2D" parent="."]
+
+[node name="S1" type="ColorRect" parent="Stars"]
+offset_left = 28.0
+offset_top = 18.0
+offset_right = 29.0
+offset_bottom = 19.0
+color = Color(0.95, 0.96, 1.00, 0.95)
+
+[node name="S2" type="ColorRect" parent="Stars"]
+offset_left = 68.0
+offset_top = 8.0
+offset_right = 69.0
+offset_bottom = 9.0
+color = Color(0.92, 0.95, 1.00, 0.85)
+
+[node name="S3" type="ColorRect" parent="Stars"]
+offset_left = 102.0
+offset_top = 32.0
+offset_right = 103.0
+offset_bottom = 33.0
+color = Color(0.95, 0.96, 1.00, 0.70)
+
+[node name="S4" type="ColorRect" parent="Stars"]
+offset_left = 154.0
+offset_top = 14.0
+offset_right = 155.0
+offset_bottom = 15.0
+color = Color(1.00, 0.96, 0.86, 0.90)
+
+[node name="S5" type="ColorRect" parent="Stars"]
+offset_left = 190.0
+offset_top = 28.0
+offset_right = 191.0
+offset_bottom = 29.0
+color = Color(0.92, 0.95, 1.00, 0.80)
+
+[node name="S6" type="ColorRect" parent="Stars"]
+offset_left = 232.0
+offset_top = 6.0
+offset_right = 233.0
+offset_bottom = 7.0
+color = Color(0.95, 0.96, 1.00, 0.95)
+
+[node name="S7" type="ColorRect" parent="Stars"]
+offset_left = 276.0
+offset_top = 36.0
+offset_right = 277.0
+offset_bottom = 37.0
+color = Color(0.94, 0.95, 1.00, 0.70)
+
+[node name="S8" type="ColorRect" parent="Stars"]
+offset_left = 318.0
+offset_top = 20.0
+offset_right = 319.0
+offset_bottom = 21.0
+color = Color(0.98, 0.95, 0.86, 0.85)
+
+[node name="S9" type="ColorRect" parent="Stars"]
+offset_left = 358.0
+offset_top = 12.0
+offset_right = 359.0
+offset_bottom = 13.0
+color = Color(0.92, 0.95, 1.00, 0.80)
+
+[node name="S10" type="ColorRect" parent="Stars"]
+offset_left = 396.0
+offset_top = 30.0
+offset_right = 397.0
+offset_bottom = 31.0
+color = Color(0.95, 0.96, 1.00, 0.95)
+
+[node name="S11" type="ColorRect" parent="Stars"]
+offset_left = 436.0
+offset_top = 8.0
+offset_right = 437.0
+offset_bottom = 9.0
+color = Color(1.00, 0.96, 0.86, 0.85)
+
+[node name="S12" type="ColorRect" parent="Stars"]
+offset_left = 538.0
+offset_top = 24.0
+offset_right = 539.0
+offset_bottom = 25.0
+color = Color(0.92, 0.95, 1.00, 0.70)
+
+[node name="S13" type="ColorRect" parent="Stars"]
+offset_left = 576.0
+offset_top = 14.0
+offset_right = 577.0
+offset_bottom = 15.0
+color = Color(0.94, 0.95, 1.00, 0.95)
+
+[node name="S14" type="ColorRect" parent="Stars"]
+offset_left = 12.0
+offset_top = 56.0
+offset_right = 13.0
+offset_bottom = 57.0
+color = Color(0.95, 0.96, 1.00, 0.55)
+
+[node name="S15" type="ColorRect" parent="Stars"]
+offset_left = 124.0
+offset_top = 62.0
+offset_right = 125.0
+offset_bottom = 63.0
+color = Color(0.92, 0.95, 1.00, 0.60)
+
+[node name="S16" type="ColorRect" parent="Stars"]
+offset_left = 246.0
+offset_top = 70.0
+offset_right = 247.0
+offset_bottom = 71.0
+color = Color(0.92, 0.95, 1.00, 0.55)
+
+[node name="S17" type="ColorRect" parent="Stars"]
+offset_left = 384.0
+offset_top = 58.0
+offset_right = 385.0
+offset_bottom = 59.0
+color = Color(0.95, 0.96, 1.00, 0.65)
+
+[node name="S18" type="ColorRect" parent="Stars"]
+offset_left = 510.0
+offset_top = 68.0
+offset_right = 511.0
+offset_bottom = 69.0
+color = Color(0.94, 0.95, 1.00, 0.55)
+
+[node name="DistantHills" type="Node2D" parent="."]
+
+[node name="Hill1" type="ColorRect" parent="DistantHills"]
+offset_left = -20.0
+offset_top = 86.0
+offset_right = 180.0
+offset_bottom = 128.0
+color = Color(0.10, 0.08, 0.22, 1.0)
+
+[node name="Hill2" type="ColorRect" parent="DistantHills"]
+offset_left = 140.0
+offset_top = 92.0
+offset_right = 380.0
+offset_bottom = 128.0
+color = Color(0.08, 0.06, 0.20, 1.0)
+
+[node name="Hill3" type="ColorRect" parent="DistantHills"]
+offset_left = 340.0
+offset_top = 82.0
+offset_right = 620.0
+offset_bottom = 128.0
+color = Color(0.10, 0.08, 0.22, 1.0)
+
+[node name="CitySkyline" type="Node2D" parent="."]
+
+[node name="B1" type="ColorRect" parent="CitySkyline"]
+offset_left = 8.0
+offset_top = 104.0
+offset_right = 36.0
+offset_bottom = 128.0
+color = Color(0.06, 0.05, 0.14, 1.0)
+
+[node name="B1Win1" type="ColorRect" parent="CitySkyline"]
+offset_left = 13.0
+offset_top = 109.0
+offset_right = 15.0
+offset_bottom = 111.0
+color = Color(1.00, 0.82, 0.40, 0.95)
+
+[node name="B1Win2" type="ColorRect" parent="CitySkyline"]
+offset_left = 21.0
+offset_top = 114.0
+offset_right = 23.0
+offset_bottom = 116.0
+color = Color(0.42, 0.78, 1.00, 0.95)
+
+[node name="B1Win3" type="ColorRect" parent="CitySkyline"]
+offset_left = 29.0
+offset_top = 109.0
+offset_right = 31.0
+offset_bottom = 111.0
+color = Color(1.00, 0.82, 0.40, 0.85)
+
+[node name="B2" type="ColorRect" parent="CitySkyline"]
+offset_left = 44.0
+offset_top = 96.0
+offset_right = 72.0
+offset_bottom = 128.0
+color = Color(0.05, 0.04, 0.12, 1.0)
+
+[node name="B2Win1" type="ColorRect" parent="CitySkyline"]
+offset_left = 49.0
+offset_top = 102.0
+offset_right = 51.0
+offset_bottom = 104.0
+color = Color(1.00, 0.82, 0.40, 0.95)
+
+[node name="B2Win2" type="ColorRect" parent="CitySkyline"]
+offset_left = 57.0
+offset_top = 108.0
+offset_right = 59.0
+offset_bottom = 110.0
+color = Color(1.00, 0.82, 0.40, 0.85)
+
+[node name="B2Win3" type="ColorRect" parent="CitySkyline"]
+offset_left = 65.0
+offset_top = 115.0
+offset_right = 67.0
+offset_bottom = 117.0
+color = Color(0.42, 0.78, 1.00, 0.95)
+
+[node name="B3" type="ColorRect" parent="CitySkyline"]
+offset_left = 90.0
+offset_top = 110.0
+offset_right = 116.0
+offset_bottom = 128.0
+color = Color(0.07, 0.05, 0.14, 1.0)
+
+[node name="B3Win1" type="ColorRect" parent="CitySkyline"]
+offset_left = 96.0
+offset_top = 116.0
+offset_right = 98.0
+offset_bottom = 118.0
+color = Color(1.00, 0.82, 0.40, 0.95)
+
+[node name="B3Win2" type="ColorRect" parent="CitySkyline"]
+offset_left = 108.0
+offset_top = 120.0
+offset_right = 110.0
+offset_bottom = 122.0
+color = Color(1.00, 0.82, 0.40, 0.85)
+
+[node name="B4" type="ColorRect" parent="CitySkyline"]
+offset_left = 132.0
+offset_top = 90.0
+offset_right = 168.0
+offset_bottom = 128.0
+color = Color(0.04, 0.03, 0.10, 1.0)
+
+[node name="B4Spire" type="ColorRect" parent="CitySkyline"]
+offset_left = 148.0
+offset_top = 80.0
+offset_right = 152.0
+offset_bottom = 90.0
+color = Color(0.04, 0.03, 0.10, 1.0)
+
+[node name="B4SpireLight" type="ColorRect" parent="CitySkyline"]
+offset_left = 149.0
+offset_top = 78.0
+offset_right = 151.0
+offset_bottom = 80.0
+color = Color(1.00, 0.30, 0.30, 0.95)
+
+[node name="B4Win1" type="ColorRect" parent="CitySkyline"]
+offset_left = 138.0
+offset_top = 96.0
+offset_right = 140.0
+offset_bottom = 98.0
+color = Color(0.42, 0.78, 1.00, 0.95)
+
+[node name="B4Win2" type="ColorRect" parent="CitySkyline"]
+offset_left = 146.0
+offset_top = 96.0
+offset_right = 148.0
+offset_bottom = 98.0
+color = Color(1.00, 0.82, 0.40, 0.95)
+
+[node name="B4Win3" type="ColorRect" parent="CitySkyline"]
+offset_left = 154.0
+offset_top = 100.0
+offset_right = 156.0
+offset_bottom = 102.0
+color = Color(0.42, 0.78, 1.00, 0.85)
+
+[node name="B4Win4" type="ColorRect" parent="CitySkyline"]
+offset_left = 162.0
+offset_top = 108.0
+offset_right = 164.0
+offset_bottom = 110.0
+color = Color(1.00, 0.82, 0.40, 0.95)
+
+[node name="B4Win5" type="ColorRect" parent="CitySkyline"]
+offset_left = 138.0
+offset_top = 116.0
+offset_right = 140.0
+offset_bottom = 118.0
+color = Color(1.00, 0.82, 0.40, 0.85)
+
+[node name="B5" type="ColorRect" parent="CitySkyline"]
+offset_left = 184.0
+offset_top = 100.0
+offset_right = 210.0
+offset_bottom = 128.0
+color = Color(0.07, 0.05, 0.14, 1.0)
+
+[node name="B5Win1" type="ColorRect" parent="CitySkyline"]
+offset_left = 190.0
+offset_top = 106.0
+offset_right = 192.0
+offset_bottom = 108.0
+color = Color(1.00, 0.82, 0.40, 0.95)
+
+[node name="B5Win2" type="ColorRect" parent="CitySkyline"]
+offset_left = 198.0
+offset_top = 112.0
+offset_right = 200.0
+offset_bottom = 114.0
+color = Color(0.42, 0.78, 1.00, 0.85)
+
+[node name="B5Win3" type="ColorRect" parent="CitySkyline"]
+offset_left = 204.0
+offset_top = 118.0
+offset_right = 206.0
+offset_bottom = 120.0
+color = Color(1.00, 0.82, 0.40, 0.95)
+
+[node name="B6" type="ColorRect" parent="CitySkyline"]
+offset_left = 228.0
+offset_top = 88.0
+offset_right = 260.0
+offset_bottom = 128.0
+color = Color(0.05, 0.04, 0.12, 1.0)
+
+[node name="B6Win1" type="ColorRect" parent="CitySkyline"]
+offset_left = 234.0
+offset_top = 94.0
+offset_right = 236.0
+offset_bottom = 96.0
+color = Color(0.42, 0.78, 1.00, 0.95)
+
+[node name="B6Win2" type="ColorRect" parent="CitySkyline"]
+offset_left = 244.0
+offset_top = 100.0
+offset_right = 246.0
+offset_bottom = 102.0
+color = Color(1.00, 0.82, 0.40, 0.85)
+
+[node name="B6Win3" type="ColorRect" parent="CitySkyline"]
+offset_left = 252.0
+offset_top = 108.0
+offset_right = 254.0
+offset_bottom = 110.0
+color = Color(1.00, 0.82, 0.40, 0.95)
+
+[node name="B6Win4" type="ColorRect" parent="CitySkyline"]
+offset_left = 234.0
+offset_top = 118.0
+offset_right = 236.0
+offset_bottom = 120.0
+color = Color(0.42, 0.78, 1.00, 0.95)
+
+[node name="B7" type="ColorRect" parent="CitySkyline"]
+offset_left = 276.0
+offset_top = 106.0
+offset_right = 300.0
+offset_bottom = 128.0
+color = Color(0.06, 0.05, 0.14, 1.0)
+
+[node name="B7Win1" type="ColorRect" parent="CitySkyline"]
+offset_left = 281.0
+offset_top = 112.0
+offset_right = 283.0
+offset_bottom = 114.0
+color = Color(1.00, 0.82, 0.40, 0.95)
+
+[node name="B7Win2" type="ColorRect" parent="CitySkyline"]
+offset_left = 291.0
+offset_top = 118.0
+offset_right = 293.0
+offset_bottom = 120.0
+color = Color(0.42, 0.78, 1.00, 0.85)
+
+[node name="B8" type="ColorRect" parent="CitySkyline"]
+offset_left = 316.0
+offset_top = 92.0
+offset_right = 350.0
+offset_bottom = 128.0
+color = Color(0.04, 0.03, 0.10, 1.0)
+
+[node name="B8Win1" type="ColorRect" parent="CitySkyline"]
+offset_left = 322.0
+offset_top = 98.0
+offset_right = 324.0
+offset_bottom = 100.0
+color = Color(1.00, 0.82, 0.40, 0.85)
+
+[node name="B8Win2" type="ColorRect" parent="CitySkyline"]
+offset_left = 332.0
+offset_top = 104.0
+offset_right = 334.0
+offset_bottom = 106.0
+color = Color(0.42, 0.78, 1.00, 0.95)
+
+[node name="B8Win3" type="ColorRect" parent="CitySkyline"]
+offset_left = 342.0
+offset_top = 110.0
+offset_right = 344.0
+offset_bottom = 112.0
+color = Color(1.00, 0.82, 0.40, 0.95)
+
+[node name="B8Win4" type="ColorRect" parent="CitySkyline"]
+offset_left = 322.0
+offset_top = 118.0
+offset_right = 324.0
+offset_bottom = 120.0
+color = Color(1.00, 0.82, 0.40, 0.85)
+
+[node name="B9" type="ColorRect" parent="CitySkyline"]
+offset_left = 366.0
+offset_top = 102.0
+offset_right = 392.0
+offset_bottom = 128.0
+color = Color(0.07, 0.05, 0.14, 1.0)
+
+[node name="B9Win1" type="ColorRect" parent="CitySkyline"]
+offset_left = 372.0
+offset_top = 108.0
+offset_right = 374.0
+offset_bottom = 110.0
+color = Color(1.00, 0.82, 0.40, 0.95)
+
+[node name="B9Win2" type="ColorRect" parent="CitySkyline"]
+offset_left = 384.0
+offset_top = 116.0
+offset_right = 386.0
+offset_bottom = 118.0
+color = Color(0.42, 0.78, 1.00, 0.85)
+
+[node name="B10" type="ColorRect" parent="CitySkyline"]
+offset_left = 410.0
+offset_top = 86.0
+offset_right = 444.0
+offset_bottom = 128.0
+color = Color(0.05, 0.04, 0.12, 1.0)
+
+[node name="B10Spire" type="ColorRect" parent="CitySkyline"]
+offset_left = 425.0
+offset_top = 74.0
+offset_right = 429.0
+offset_bottom = 86.0
+color = Color(0.05, 0.04, 0.12, 1.0)
+
+[node name="B10SpireLight" type="ColorRect" parent="CitySkyline"]
+offset_left = 426.0
+offset_top = 72.0
+offset_right = 428.0
+offset_bottom = 74.0
+color = Color(1.00, 0.30, 0.30, 0.95)
+
+[node name="B10Win1" type="ColorRect" parent="CitySkyline"]
+offset_left = 416.0
+offset_top = 92.0
+offset_right = 418.0
+offset_bottom = 94.0
+color = Color(1.00, 0.82, 0.40, 0.95)
+
+[node name="B10Win2" type="ColorRect" parent="CitySkyline"]
+offset_left = 424.0
+offset_top = 96.0
+offset_right = 426.0
+offset_bottom = 98.0
+color = Color(0.42, 0.78, 1.00, 0.95)
+
+[node name="B10Win3" type="ColorRect" parent="CitySkyline"]
+offset_left = 432.0
+offset_top = 102.0
+offset_right = 434.0
+offset_bottom = 104.0
+color = Color(1.00, 0.82, 0.40, 0.85)
+
+[node name="B10Win4" type="ColorRect" parent="CitySkyline"]
+offset_left = 440.0
+offset_top = 108.0
+offset_right = 442.0
+offset_bottom = 110.0
+color = Color(1.00, 0.82, 0.40, 0.95)
+
+[node name="B10Win5" type="ColorRect" parent="CitySkyline"]
+offset_left = 416.0
+offset_top = 116.0
+offset_right = 418.0
+offset_bottom = 118.0
+color = Color(0.42, 0.78, 1.00, 0.85)
+
+[node name="B10Win6" type="ColorRect" parent="CitySkyline"]
+offset_left = 432.0
+offset_top = 118.0
+offset_right = 434.0
+offset_bottom = 120.0
+color = Color(1.00, 0.82, 0.40, 0.95)
+
+[node name="B11" type="ColorRect" parent="CitySkyline"]
+offset_left = 460.0
+offset_top = 98.0
+offset_right = 488.0
+offset_bottom = 128.0
+color = Color(0.06, 0.05, 0.14, 1.0)
+
+[node name="B11Win1" type="ColorRect" parent="CitySkyline"]
+offset_left = 466.0
+offset_top = 104.0
+offset_right = 468.0
+offset_bottom = 106.0
+color = Color(1.00, 0.82, 0.40, 0.95)
+
+[node name="B11Win2" type="ColorRect" parent="CitySkyline"]
+offset_left = 476.0
+offset_top = 110.0
+offset_right = 478.0
+offset_bottom = 112.0
+color = Color(0.42, 0.78, 1.00, 0.85)
+
+[node name="B11Win3" type="ColorRect" parent="CitySkyline"]
+offset_left = 482.0
+offset_top = 118.0
+offset_right = 484.0
+offset_bottom = 120.0
+color = Color(1.00, 0.82, 0.40, 0.95)
+
+[node name="B12" type="ColorRect" parent="CitySkyline"]
+offset_left = 506.0
+offset_top = 108.0
+offset_right = 528.0
+offset_bottom = 128.0
+color = Color(0.07, 0.05, 0.14, 1.0)
+
+[node name="B12Win1" type="ColorRect" parent="CitySkyline"]
+offset_left = 512.0
+offset_top = 114.0
+offset_right = 514.0
+offset_bottom = 116.0
+color = Color(1.00, 0.82, 0.40, 0.85)
+
+[node name="B12Win2" type="ColorRect" parent="CitySkyline"]
+offset_left = 520.0
+offset_top = 120.0
+offset_right = 522.0
+offset_bottom = 122.0
+color = Color(0.42, 0.78, 1.00, 0.95)
+
+[node name="B13" type="ColorRect" parent="CitySkyline"]
+offset_left = 546.0
+offset_top = 94.0
+offset_right = 578.0
+offset_bottom = 128.0
+color = Color(0.05, 0.04, 0.12, 1.0)
+
+[node name="B13Win1" type="ColorRect" parent="CitySkyline"]
+offset_left = 552.0
+offset_top = 100.0
+offset_right = 554.0
+offset_bottom = 102.0
+color = Color(0.42, 0.78, 1.00, 0.95)
+
+[node name="B13Win2" type="ColorRect" parent="CitySkyline"]
+offset_left = 562.0
+offset_top = 106.0
+offset_right = 564.0
+offset_bottom = 108.0
+color = Color(1.00, 0.82, 0.40, 0.85)
+
+[node name="B13Win3" type="ColorRect" parent="CitySkyline"]
+offset_left = 570.0
+offset_top = 114.0
+offset_right = 572.0
+offset_bottom = 116.0
+color = Color(1.00, 0.82, 0.40, 0.95)
+
+[node name="WindTurbines" type="Node2D" parent="."]
+
+[node name="T1Tower" type="ColorRect" parent="WindTurbines"]
+offset_left = 75.0
+offset_top = 64.0
+offset_right = 77.0
+offset_bottom = 110.0
+color = Color(0.92, 0.94, 0.98, 0.70)
+
+[node name="T1Hub" type="ColorRect" parent="WindTurbines"]
+offset_left = 74.0
+offset_top = 62.0
+offset_right = 78.0
+offset_bottom = 66.0
+color = Color(0.92, 0.94, 0.98, 0.85)
+
+[node name="T1Blade1" type="ColorRect" parent="WindTurbines"]
+offset_left = 76.0
+offset_top = 50.0
+offset_right = 77.0
+offset_bottom = 64.0
+color = Color(0.92, 0.94, 0.98, 0.70)
+
+[node name="T1Blade2" type="ColorRect" parent="WindTurbines"]
+offset_left = 64.0
+offset_top = 63.0
+offset_right = 76.0
+offset_bottom = 64.0
+color = Color(0.92, 0.94, 0.98, 0.70)
+
+[node name="T1Blade3" type="ColorRect" parent="WindTurbines"]
+offset_left = 76.0
+offset_top = 64.0
+offset_right = 88.0
+offset_bottom = 65.0
+color = Color(0.92, 0.94, 0.98, 0.70)
+
+[node name="T2Tower" type="ColorRect" parent="WindTurbines"]
+offset_left = 295.0
+offset_top = 56.0
+offset_right = 297.0
+offset_bottom = 110.0
+color = Color(0.92, 0.94, 0.98, 0.70)
+
+[node name="T2Hub" type="ColorRect" parent="WindTurbines"]
+offset_left = 294.0
+offset_top = 54.0
+offset_right = 298.0
+offset_bottom = 58.0
+color = Color(0.92, 0.94, 0.98, 0.85)
+
+[node name="T2Blade1" type="ColorRect" parent="WindTurbines"]
+offset_left = 295.0
+offset_top = 40.0
+offset_right = 297.0
+offset_bottom = 56.0
+color = Color(0.92, 0.94, 0.98, 0.70)
+
+[node name="T2Blade2" type="ColorRect" parent="WindTurbines"]
+offset_left = 282.0
+offset_top = 49.0
+offset_right = 295.0
+offset_bottom = 50.0
+color = Color(0.92, 0.94, 0.98, 0.70)
+
+[node name="T2Blade3" type="ColorRect" parent="WindTurbines"]
+offset_left = 297.0
+offset_top = 60.0
+offset_right = 310.0
+offset_bottom = 61.0
+color = Color(0.92, 0.94, 0.98, 0.70)
+
+[node name="T3Tower" type="ColorRect" parent="WindTurbines"]
+offset_left = 565.0
+offset_top = 60.0
+offset_right = 567.0
+offset_bottom = 110.0
+color = Color(0.92, 0.94, 0.98, 0.70)
+
+[node name="T3Hub" type="ColorRect" parent="WindTurbines"]
+offset_left = 564.0
+offset_top = 58.0
+offset_right = 568.0
+offset_bottom = 62.0
+color = Color(0.92, 0.94, 0.98, 0.85)
+
+[node name="T3Blade1" type="ColorRect" parent="WindTurbines"]
+offset_left = 566.0
+offset_top = 46.0
+offset_right = 567.0
+offset_bottom = 60.0
+color = Color(0.92, 0.94, 0.98, 0.70)
+
+[node name="T3Blade2" type="ColorRect" parent="WindTurbines"]
+offset_left = 553.0
+offset_top = 65.0
+offset_right = 566.0
+offset_bottom = 66.0
+color = Color(0.92, 0.94, 0.98, 0.70)
+
+[node name="T3Blade3" type="ColorRect" parent="WindTurbines"]
+offset_left = 567.0
+offset_top = 53.0
+offset_right = 580.0
+offset_bottom = 54.0
+color = Color(0.92, 0.94, 0.98, 0.70)
+
+[node name="GroundReflection" type="ColorRect" parent="."]
+offset_left = -10.0
+offset_top = 130.0
+offset_right = 620.0
+offset_bottom = 210.0
+color = Color(0.04, 0.03, 0.10, 0.45)
+
+[node name="Camera" parent="." instance=ExtResource("2_cam")]
+position = Vector2(40, 120)
+limit_left = 0
+limit_top = 0
+limit_right = 600
+limit_bottom = 200
+
+[node name="Player" parent="." instance=ExtResource("1_pl")]
+position = Vector2(30, 150)
+
+[node name="Platforms" type="Node2D" parent="."]
+
+[node name="StartPlatform" type="StaticBody2D" parent="Platforms"]
+collision_layer = 1
+collision_mask = 2
+
+[node name="Sprite" type="Sprite2D" parent="Platforms/StartPlatform"]
+texture_repeat = 2
+texture = ExtResource("8_flr_e")
+centered = false
+position = Vector2(-36, -4)
+region_enabled = true
+region_rect = Rect2(0, 0, 72, 8)
+modulate = Color(0.65, 0.85, 1.10, 1.0)
+
+[node name="Glow" type="ColorRect" parent="Platforms/StartPlatform"]
+offset_left = -36.0
+offset_top = -5.0
+offset_right = 36.0
+offset_bottom = -4.0
+color = Color(0.40, 0.92, 0.62, 0.85)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/StartPlatform"]
+shape = SubResource("RectangleShape2D_floor")
+
+[node name="StartPlatform2" type="StaticBody2D" parent="Platforms"]
+position = Vector2(30, 168)
+collision_layer = 1
+collision_mask = 2
+
+[node name="Sprite" type="Sprite2D" parent="Platforms/StartPlatform2"]
+texture_repeat = 2
+texture = ExtResource("8_flr_e")
+centered = false
+position = Vector2(-36, -4)
+region_enabled = true
+region_rect = Rect2(0, 0, 72, 8)
+modulate = Color(0.65, 0.85, 1.10, 1.0)
+
+[node name="Glow" type="ColorRect" parent="Platforms/StartPlatform2"]
+offset_left = -36.0
+offset_top = -5.0
+offset_right = 36.0
+offset_bottom = -4.0
+color = Color(0.40, 0.92, 0.62, 0.85)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/StartPlatform2"]
+shape = SubResource("RectangleShape2D_floor")
+
+[node name="MidPlatform1" type="StaticBody2D" parent="Platforms"]
+position = Vector2(150, 145)
+collision_layer = 1
+collision_mask = 2
+
+[node name="Sprite" type="Sprite2D" parent="Platforms/MidPlatform1"]
+texture_repeat = 2
+texture = ExtResource("8_flr_e")
+centered = false
+position = Vector2(-36, -4)
+region_enabled = true
+region_rect = Rect2(0, 0, 72, 8)
+modulate = Color(0.65, 0.85, 1.10, 1.0)
+
+[node name="Glow" type="ColorRect" parent="Platforms/MidPlatform1"]
+offset_left = -36.0
+offset_top = -5.0
+offset_right = 36.0
+offset_bottom = -4.0
+color = Color(0.40, 0.92, 0.62, 0.85)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/MidPlatform1"]
+shape = SubResource("RectangleShape2D_floor")
+
+[node name="MidPlatform2" type="StaticBody2D" parent="Platforms"]
+position = Vector2(290, 110)
+collision_layer = 1
+collision_mask = 2
+
+[node name="Sprite" type="Sprite2D" parent="Platforms/MidPlatform2"]
+texture_repeat = 2
+texture = ExtResource("8_flr_e")
+centered = false
+position = Vector2(-36, -4)
+region_enabled = true
+region_rect = Rect2(0, 0, 72, 8)
+modulate = Color(0.65, 0.85, 1.10, 1.0)
+
+[node name="Glow" type="ColorRect" parent="Platforms/MidPlatform2"]
+offset_left = -36.0
+offset_top = -5.0
+offset_right = 36.0
+offset_bottom = -4.0
+color = Color(0.40, 0.92, 0.62, 0.85)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/MidPlatform2"]
+shape = SubResource("RectangleShape2D_floor")
+
+[node name="EndPlatform" type="StaticBody2D" parent="Platforms"]
+position = Vector2(550, 145)
+collision_layer = 1
+collision_mask = 2
+
+[node name="Sprite" type="Sprite2D" parent="Platforms/EndPlatform"]
+texture_repeat = 2
+texture = ExtResource("8_flr_e")
+centered = false
+position = Vector2(-36, -4)
+region_enabled = true
+region_rect = Rect2(0, 0, 72, 8)
+modulate = Color(0.65, 0.85, 1.10, 1.0)
+
+[node name="Glow" type="ColorRect" parent="Platforms/EndPlatform"]
+offset_left = -36.0
+offset_top = -5.0
+offset_right = 36.0
+offset_bottom = -4.0
+color = Color(0.40, 0.92, 0.62, 0.85)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/EndPlatform"]
+shape = SubResource("RectangleShape2D_floor")
+
+[node name="WindPlatform1" parent="." instance=ExtResource("4_mp")]
+position = Vector2(85, 140)
+time = 2
+
+[node name="Target" parent="WindPlatform1" index="1"]
+position = Vector2(0, -30)
+
+[node name="WindPlatform2" parent="." instance=ExtResource("4_mp")]
+position = Vector2(220, 130)
+time = 2.5
+
+[node name="Target" parent="WindPlatform2" index="1"]
+position = Vector2(0, -40)
+
+[node name="WindPlatform3" parent="." instance=ExtResource("4_mp")]
+position = Vector2(370, 100)
+time = 2
+
+[node name="Target" parent="WindPlatform3" index="1"]
+position = Vector2(80, 30)
+
+[node name="WindPlatform4" parent="." instance=ExtResource("4_mp")]
+position = Vector2(470, 130)
+time = 1.8
+
+[node name="Target" parent="WindPlatform4" index="1"]
+position = Vector2(0, -25)
+
+[node name="Collectible1" parent="." instance=ExtResource("0_col")]
+position = Vector2(85, 125)
+
+[node name="Collectible2" parent="." instance=ExtResource("0_col")]
+position = Vector2(150, 130)
+
+[node name="Collectible3" parent="." instance=ExtResource("0_col")]
+position = Vector2(290, 95)
+
+[node name="Collectible4" parent="." instance=ExtResource("0_col")]
+position = Vector2(420, 85)
+
+[node name="Collectible5" parent="." instance=ExtResource("0_col")]
+position = Vector2(550, 130)
+
+[node name="LevelEnd" parent="." instance=ExtResource("3_end")]
+position = Vector2(590, 145)
+require_all_collectibles = true
+require_boss_defeated = true
+
+[node name="Skeleton1" parent="." instance=ExtResource("5_sk")]
+position = Vector2(140, 130)
+external_frame_base = "res://sprites/0x72_DungeonTilesetii_v1.7/frames/chort_idle_anim_f"
+external_frame_count = 4
+external_frame_speed = 6.0
+enemy_sprite_offset_y = 4.0
+enemy_tint = Color(1.10, 0.85, 0.80, 1.0)
+
+[node name="Skeleton2" parent="." instance=ExtResource("5_sk")]
+position = Vector2(280, 95)
+external_frame_base = "res://sprites/0x72_DungeonTilesetii_v1.7/frames/chort_idle_anim_f"
+external_frame_count = 4
+external_frame_speed = 6.0
+enemy_sprite_offset_y = 4.0
+enemy_tint = Color(1.10, 0.85, 0.80, 1.0)
+
+[node name="Checkpoint1" parent="." instance=ExtResource("7_cp_e")]
+position = Vector2(290, 106)
+banner_color = "yellow"
+
+[node name="LifePickup1" parent="." instance=ExtResource("9_lp_e")]
+position = Vector2(420, 75)
+
+[node name="Boss" parent="." instance=ExtResource("6_boss_e")]
+position = Vector2(530, 122)
+level_id = "energy"
+max_hp = 5
+tint = Color(1.05, 0.90, 0.85, 1.0)
+external_run_base = "res://sprites/0x72_DungeonTilesetii_v1.7/frames/big_demon_run_anim_f"
+external_run_count = 4
+external_idle_base = "res://sprites/0x72_DungeonTilesetii_v1.7/frames/big_demon_idle_anim_f"
+external_idle_count = 4
+external_frame_speed = 6.0
+
+[node name="CollisionShape2D" parent="LevelEnd" index="0"]
+position = Vector2(0, -50)
+shape = SubResource("RectangleShape2D_end")
+
+[node name="LimitLeft" type="StaticBody2D" parent="."]
+collision_layer = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LimitLeft"]
+position = Vector2(-4, 100)
+shape = SubResource("RectangleShape2D_wall_e")
+
+[node name="LimitRight" type="StaticBody2D" parent="."]
+collision_layer = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LimitRight"]
+position = Vector2(620, 100)
+shape = SubResource("RectangleShape2D_wall_e")
+
+[node name="VoidBelow" type="Area2D" parent="." groups=["LethalArea"]]
+position = Vector2(300, 220)
+collision_layer = 16
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="VoidBelow"]
+shape = SubResource("RectangleShape2D_void")
+
+[editable path="LevelEnd"]
+[editable path="WindPlatform1"]
+[editable path="WindPlatform2"]
+[editable path="WindPlatform3"]
+[editable path="WindPlatform4"]

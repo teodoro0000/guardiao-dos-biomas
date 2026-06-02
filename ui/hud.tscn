@@ -1,0 +1,82 @@
+[gd_scene load_steps=3 format=4 uid="uid://dods0hud00001"]
+
+[ext_resource type="Script" path="res://scripts/hud.gd" id="1_hud"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hud_bar"]
+bg_color = Color(0.04, 0.06, 0.08, 0.78)
+border_width_bottom = 1
+border_color = Color(0.18, 0.86, 0.50, 0.35)
+content_margin_left = 6.0
+content_margin_top = 5.0
+content_margin_right = 6.0
+content_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_combo_bg"]
+bg_color = Color(0.04, 0.06, 0.08, 0.55)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_combo_fg"]
+bg_color = Color(0.40, 0.92, 0.62, 1.0)
+
+[node name="HUD" type="CanvasLayer"]
+layer = 10
+script = ExtResource("1_hud")
+
+[node name="Root" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="TopBar" type="PanelContainer" parent="Root"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 20.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_hud_bar")
+
+[node name="HBox" type="HBoxContainer" parent="Root/TopBar"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="OdsLabel" type="Label" parent="Root/TopBar/HBox"]
+layout_mode = 2
+text = "ODS 15"
+theme_override_colors/font_color = Color(0.62, 1.0, 0.78, 1.0)
+theme_override_font_sizes/font_size = 6
+
+[node name="LivesLabel" type="Label" parent="Root/TopBar/HBox"]
+layout_mode = 2
+text = "♥♥♥"
+theme_override_colors/font_color = Color(1.0, 0.34, 0.42, 1.0)
+theme_override_font_sizes/font_size = 7
+
+[node name="Spacer" type="Control" parent="Root/TopBar/HBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CollectibleLabel" type="Label" parent="Root/TopBar/HBox"]
+layout_mode = 2
+text = "Coletáveis"
+theme_override_colors/font_color = Color(0.82, 0.86, 0.92, 1.0)
+theme_override_font_sizes/font_size = 6
+
+[node name="CollectibleCount" type="Label" parent="Root/TopBar/HBox"]
+layout_mode = 2
+text = "0/5"
+theme_override_colors/font_color = Color(1.0, 1.0, 1.0, 1.0)
+theme_override_font_sizes/font_size = 7
+
+[node name="ComboBar" type="ProgressBar" parent="Root"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 20.0
+offset_bottom = 22.0
+min_value = 0.0
+max_value = 1.0
+value = 0.0
+show_percentage = false
+modulate = Color(1, 1, 1, 0)
+theme_override_styles/background = SubResource("StyleBoxFlat_combo_bg")
+theme_override_styles/fill = SubResource("StyleBoxFlat_combo_fg")

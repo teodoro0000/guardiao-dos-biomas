@@ -1,0 +1,123 @@
+[gd_scene format=4 uid="uid://dods0csel001"]
+
+[ext_resource type="Script" path="res://scripts/character_select.gd" id="1_csel"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btn"]
+bg_color = Color(0.08, 0.10, 0.12, 1.0)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.20, 0.86, 0.50, 0.55)
+content_margin_left = 10.0
+content_margin_top = 5.0
+content_margin_right = 10.0
+content_margin_bottom = 5.0
+
+[node name="CharacterSelect" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("1_csel")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.04, 0.06, 0.08, 1.0)
+
+[node name="Layout" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Content" type="VBoxContainer" parent="Layout"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="Eyebrow" type="Label" parent="Layout/Content"]
+layout_mode = 2
+text = "ESCOLHA SEU GUARDIÃO"
+horizontal_alignment = 1
+theme_override_colors/font_color = Color(0.40, 0.92, 0.62, 1.0)
+theme_override_font_sizes/font_size = 6
+
+[node name="Title" type="Label" parent="Layout/Content"]
+layout_mode = 2
+text = "ESCOLHA SEU DOM"
+horizontal_alignment = 1
+theme_override_colors/font_color = Color(0.98, 0.99, 1.0, 1.0)
+theme_override_font_sizes/font_size = 9
+
+[node name="Gap1" type="Control" parent="Layout/Content"]
+custom_minimum_size = Vector2(0, 4)
+layout_mode = 2
+
+[node name="Cards" type="HBoxContainer" parent="Layout/Content"]
+layout_mode = 2
+theme_override_constants/separation = 4
+alignment = 1
+
+[node name="Gap2" type="Control" parent="Layout/Content"]
+custom_minimum_size = Vector2(0, 4)
+layout_mode = 2
+
+[node name="Details" type="VBoxContainer" parent="Layout/Content"]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="Name" type="Label" parent="Layout/Content/Details"]
+layout_mode = 2
+text = "Veloz"
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 9
+
+[node name="Tagline" type="Label" parent="Layout/Content/Details"]
+layout_mode = 2
+text = "Vento nas pernas"
+horizontal_alignment = 1
+theme_override_colors/font_color = Color(0.72, 0.78, 0.84, 1.0)
+theme_override_font_sizes/font_size = 7
+
+[node name="Power" type="Label" parent="Layout/Content/Details"]
+layout_mode = 2
+text = "→  Velocidade horizontal +30%"
+horizontal_alignment = 1
+theme_override_colors/font_color = Color(0.98, 0.99, 1.0, 1.0)
+theme_override_font_sizes/font_size = 7
+
+[node name="Bioma" type="Label" parent="Layout/Content/Details"]
+layout_mode = 2
+text = "Bioma · ODS"
+horizontal_alignment = 1
+theme_override_colors/font_color = Color(0.55, 0.62, 0.70, 1.0)
+theme_override_font_sizes/font_size = 5
+
+[node name="Gap3" type="Control" parent="Layout/Content"]
+custom_minimum_size = Vector2(0, 4)
+layout_mode = 2
+
+[node name="Footer" type="HBoxContainer" parent="Layout/Content"]
+layout_mode = 2
+theme_override_constants/separation = 6
+alignment = 1
+
+[node name="BackButton" type="Button" parent="Layout/Content/Footer"]
+layout_mode = 2
+flat = true
+theme_override_colors/font_color = Color(0.62, 0.66, 0.72, 1.0)
+theme_override_font_sizes/font_size = 7
+text = "← menu"
+
+[node name="ConfirmButton" type="Button" parent="Layout/Content/Footer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.40, 0.92, 0.62, 1.0)
+theme_override_font_sizes/font_size = 8
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn")
+theme_override_styles/hover = SubResource("StyleBoxFlat_btn")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_btn")
+theme_override_styles/focus = SubResource("StyleBoxFlat_btn")
+text = "CONFIRMAR →"

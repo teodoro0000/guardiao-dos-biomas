@@ -1,0 +1,162 @@
+[gd_scene load_steps=5 format=4 uid="uid://dods0mmenu0001"]
+
+[ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_mm"]
+[ext_resource type="Texture2D" path="res://sprites/Backgrounds/backgrounds_atlas.png" id="2_bg_atlas"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_forest"]
+atlas = ExtResource("2_bg_atlas")
+region = Rect2(144, 0, 48, 72)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btn"]
+bg_color = Color(0.08, 0.10, 0.12, 1.0)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.20, 0.86, 0.50, 0.55)
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+content_margin_left = 12.0
+content_margin_top = 4.0
+content_margin_right = 12.0
+content_margin_bottom = 4.0
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("1_mm")
+
+[node name="Backdrop" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = SubResource("AtlasTexture_forest")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.04, 0.06, 0.08, 0.68)
+
+[node name="Vignette" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.06, 0.18, 0.12, 0.18)
+
+[node name="TopAccent" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 14.0
+offset_bottom = 15.0
+color = Color(0.40, 0.92, 0.62, 0.40)
+
+[node name="BottomAccent" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -15.0
+offset_bottom = -14.0
+color = Color(0.40, 0.92, 0.62, 0.40)
+
+[node name="Layout" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Content" type="VBoxContainer" parent="Layout"]
+layout_mode = 2
+theme_override_constants/separation = 4
+alignment = 1
+
+[node name="Eyebrow" type="Label" parent="Layout/Content"]
+custom_minimum_size = Vector2(0, 9)
+layout_mode = 2
+text = "FATEC JACAREÍ · DIA DO MEIO AMBIENTE"
+horizontal_alignment = 1
+vertical_alignment = 1
+theme_override_colors/font_color = Color(0.40, 0.92, 0.62, 1.0)
+theme_override_font_sizes/font_size = 5
+
+[node name="Gap1" type="Control" parent="Layout/Content"]
+custom_minimum_size = Vector2(0, 6)
+layout_mode = 2
+
+[node name="TitleLine1" type="Label" parent="Layout/Content"]
+custom_minimum_size = Vector2(0, 18)
+layout_mode = 2
+text = "GUARDIÃO"
+horizontal_alignment = 1
+vertical_alignment = 1
+theme_override_colors/font_color = Color(0.98, 0.99, 1.0, 1.0)
+theme_override_font_sizes/font_size = 12
+
+[node name="TitleGap" type="Control" parent="Layout/Content"]
+custom_minimum_size = Vector2(0, 4)
+layout_mode = 2
+
+[node name="TitleLine2" type="Label" parent="Layout/Content"]
+custom_minimum_size = Vector2(0, 18)
+layout_mode = 2
+text = "DOS BIOMAS"
+horizontal_alignment = 1
+vertical_alignment = 1
+theme_override_colors/font_color = Color(0.98, 0.99, 1.0, 1.0)
+theme_override_font_sizes/font_size = 12
+
+[node name="Gap1b" type="Control" parent="Layout/Content"]
+custom_minimum_size = Vector2(0, 6)
+layout_mode = 2
+
+[node name="Divider" type="ColorRect" parent="Layout/Content"]
+custom_minimum_size = Vector2(60, 1)
+layout_mode = 2
+size_flags_horizontal = 4
+color = Color(0.40, 0.92, 0.62, 0.50)
+
+[node name="Subtitle" type="Label" parent="Layout/Content"]
+custom_minimum_size = Vector2(0, 9)
+layout_mode = 2
+text = "um jogo sobre os ODS"
+horizontal_alignment = 1
+vertical_alignment = 1
+theme_override_colors/font_color = Color(0.72, 0.78, 0.84, 1.0)
+theme_override_font_sizes/font_size = 5
+
+[node name="Gap2" type="Control" parent="Layout/Content"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="StartButton" type="Button" parent="Layout/Content"]
+custom_minimum_size = Vector2(120, 18)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.40, 0.92, 0.62, 1.0)
+theme_override_font_sizes/font_size = 7
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn")
+theme_override_styles/hover = SubResource("StyleBoxFlat_btn")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_btn")
+theme_override_styles/focus = SubResource("StyleBoxFlat_btn")
+text = "INICIAR"
+
+[node name="QuitButton" type="Button" parent="Layout/Content"]
+custom_minimum_size = Vector2(120, 12)
+layout_mode = 2
+size_flags_horizontal = 4
+flat = true
+theme_override_colors/font_color = Color(0.55, 0.60, 0.66, 1.0)
+theme_override_font_sizes/font_size = 5
+text = "SAIR"

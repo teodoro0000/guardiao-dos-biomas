@@ -1,0 +1,235 @@
+[gd_scene format=4 uid="uid://dods0cred001"]
+
+[ext_resource type="Script" path="res://scripts/credits.gd" id="1_cr"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btn"]
+bg_color = Color(0.08, 0.10, 0.12, 1.0)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.20, 0.86, 0.50, 0.55)
+content_margin_left = 8.0
+content_margin_top = 4.0
+content_margin_right = 8.0
+content_margin_bottom = 4.0
+
+[node name="Credits" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("1_cr")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.03, 0.05, 0.07, 1.0)
+
+[node name="GreenWash" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.10, 0.50, 0.30, 0.10)
+
+[node name="TopAccent" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 10.0
+offset_bottom = 11.0
+color = Color(0.40, 0.92, 0.62, 0.55)
+
+[node name="BottomAccent" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -11.0
+offset_bottom = -10.0
+color = Color(0.40, 0.92, 0.62, 0.55)
+
+[node name="Layout" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 12.0
+offset_top = 16.0
+offset_right = -12.0
+offset_bottom = -10.0
+theme_override_constants/separation = 2
+
+[node name="Eyebrow" type="Label" parent="Layout"]
+custom_minimum_size = Vector2(0, 9)
+layout_mode = 2
+text = "VOCÊ COMPLETOU AS TRÊS JORNADAS"
+horizontal_alignment = 1
+vertical_alignment = 1
+theme_override_colors/font_color = Color(0.40, 0.92, 0.62, 1.0)
+theme_override_font_sizes/font_size = 5
+
+[node name="Gap1" type="Control" parent="Layout"]
+custom_minimum_size = Vector2(0, 4)
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Layout"]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+text = "OBRIGADO POR JOGAR"
+horizontal_alignment = 1
+vertical_alignment = 1
+theme_override_colors/font_color = Color(0.98, 0.99, 1.0, 1.0)
+theme_override_font_sizes/font_size = 10
+
+[node name="Gap2" type="Control" parent="Layout"]
+custom_minimum_size = Vector2(0, 4)
+layout_mode = 2
+
+[node name="Divider" type="ColorRect" parent="Layout"]
+custom_minimum_size = Vector2(40, 1)
+layout_mode = 2
+size_flags_horizontal = 4
+color = Color(0.40, 0.92, 0.62, 0.45)
+
+[node name="Gap3" type="Control" parent="Layout"]
+custom_minimum_size = Vector2(0, 4)
+layout_mode = 2
+
+[node name="Message" type="Label" parent="Layout"]
+layout_mode = 2
+text = "Cada ação conta · cada bioma vive"
+autowrap_mode = 2
+horizontal_alignment = 1
+theme_override_colors/font_color = Color(0.86, 0.90, 0.94, 1.0)
+theme_override_font_sizes/font_size = 6
+
+[node name="Gap4" type="Control" parent="Layout"]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+
+[node name="OdsList" type="VBoxContainer" parent="Layout"]
+layout_mode = 2
+theme_override_constants/separation = 1
+
+[node name="Ods15" type="Label" parent="Layout/OdsList"]
+layout_mode = 2
+text = "ODS 15 · floresta preservada"
+horizontal_alignment = 1
+theme_override_colors/font_color = Color(0.55, 0.96, 0.72, 1.0)
+theme_override_font_sizes/font_size = 5
+
+[node name="Ods14" type="Label" parent="Layout/OdsList"]
+layout_mode = 2
+text = "ODS 14 · oceanos limpos"
+horizontal_alignment = 1
+theme_override_colors/font_color = Color(0.55, 0.85, 1.00, 1.0)
+theme_override_font_sizes/font_size = 5
+
+[node name="Ods7" type="Label" parent="Layout/OdsList"]
+layout_mode = 2
+text = "ODS 7 · energia limpa"
+horizontal_alignment = 1
+theme_override_colors/font_color = Color(1.00, 0.82, 0.50, 1.0)
+theme_override_font_sizes/font_size = 5
+
+[node name="Gap5" type="Control" parent="Layout"]
+custom_minimum_size = Vector2(0, 6)
+layout_mode = 2
+
+[node name="Divider2" type="ColorRect" parent="Layout"]
+custom_minimum_size = Vector2(120, 1)
+layout_mode = 2
+size_flags_horizontal = 4
+color = Color(0.40, 0.92, 0.62, 0.30)
+
+[node name="Gap6" type="Control" parent="Layout"]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+
+[node name="CreditsHeader" type="Label" parent="Layout"]
+layout_mode = 2
+text = "CRÉDITOS"
+horizontal_alignment = 1
+theme_override_colors/font_color = Color(0.40, 0.92, 0.62, 1.0)
+theme_override_font_sizes/font_size = 5
+
+[node name="Gap7" type="Control" parent="Layout"]
+custom_minimum_size = Vector2(0, 3)
+layout_mode = 2
+
+[node name="CreditsBody" type="VBoxContainer" parent="Layout"]
+layout_mode = 2
+theme_override_constants/separation = 1
+
+[node name="DevLabel" type="Label" parent="Layout/CreditsBody"]
+layout_mode = 2
+text = "desenvolvimento · Fatec Jacareí · DSM"
+horizontal_alignment = 1
+theme_override_colors/font_color = Color(0.86, 0.90, 0.94, 1.0)
+theme_override_font_sizes/font_size = 4
+
+[node name="CharLabel" type="Label" parent="Layout/CreditsBody"]
+layout_mode = 2
+text = "personagens · Pixel Adventure (Pixelfrog · itch.io)"
+horizontal_alignment = 1
+theme_override_colors/font_color = Color(0.72, 0.78, 0.84, 1.0)
+theme_override_font_sizes/font_size = 4
+
+[node name="TilesLabel" type="Label" parent="Layout/CreditsBody"]
+layout_mode = 2
+text = "tilesets · Seasonal Tilesets · Kenney"
+horizontal_alignment = 1
+theme_override_colors/font_color = Color(0.72, 0.78, 0.84, 1.0)
+theme_override_font_sizes/font_size = 4
+
+[node name="IconsLabel" type="Label" parent="Layout/CreditsBody"]
+layout_mode = 2
+text = "ícones · Flaticon"
+horizontal_alignment = 1
+theme_override_colors/font_color = Color(0.72, 0.78, 0.84, 1.0)
+theme_override_font_sizes/font_size = 4
+
+[node name="MusicLabel" type="Label" parent="Layout/CreditsBody"]
+layout_mode = 2
+text = "música · Kevin MacLeod · incompetech.com"
+horizontal_alignment = 1
+theme_override_colors/font_color = Color(0.72, 0.78, 0.84, 1.0)
+theme_override_font_sizes/font_size = 4
+
+[node name="FontLabel" type="Label" parent="Layout/CreditsBody"]
+layout_mode = 2
+text = "tipografia · Press Start 2P · Google Fonts"
+horizontal_alignment = 1
+theme_override_colors/font_color = Color(0.72, 0.78, 0.84, 1.0)
+theme_override_font_sizes/font_size = 4
+
+[node name="Spacer" type="Control" parent="Layout"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Footer" type="HBoxContainer" parent="Layout"]
+layout_mode = 2
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="MenuButton" type="Button" parent="Layout/Footer"]
+layout_mode = 2
+flat = true
+theme_override_colors/font_color = Color(0.62, 0.66, 0.72, 1.0)
+theme_override_font_sizes/font_size = 6
+text = "← menu"
+
+[node name="ReplayButton" type="Button" parent="Layout/Footer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.40, 0.92, 0.62, 1.0)
+theme_override_font_sizes/font_size = 7
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn")
+theme_override_styles/hover = SubResource("StyleBoxFlat_btn")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_btn")
+theme_override_styles/focus = SubResource("StyleBoxFlat_btn")
+text = "JOGAR DE NOVO"

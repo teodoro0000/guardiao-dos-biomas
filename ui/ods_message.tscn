@@ -1,0 +1,131 @@
+[gd_scene load_steps=3 format=4 uid="uid://dods0msg00001"]
+
+[ext_resource type="Script" path="res://scripts/ods_message.gd" id="1_msg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btn"]
+bg_color = Color(0.08, 0.10, 0.12, 1.0)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.20, 0.86, 0.50, 0.55)
+content_margin_left = 8.0
+content_margin_top = 4.0
+content_margin_right = 8.0
+content_margin_bottom = 4.0
+
+[node name="OdsMessage" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("1_msg")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.03, 0.05, 0.07, 1.0)
+
+[node name="GreenWash" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.10, 0.50, 0.30, 0.12)
+
+[node name="Layout" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_constants/margin_left = 14
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 14
+theme_override_constants/margin_bottom = 12
+
+[node name="Content" type="VBoxContainer" parent="Layout"]
+layout_mode = 2
+theme_override_constants/separation = 3
+
+[node name="Eyebrow" type="Label" parent="Layout/Content"]
+layout_mode = 2
+text = "VOCÊ ACABOU DE EXPLORAR"
+theme_override_colors/font_color = Color(0.40, 0.92, 0.62, 1.0)
+theme_override_font_sizes/font_size = 5
+
+[node name="OdsNumber" type="Label" parent="Layout/Content"]
+layout_mode = 2
+text = "ODS 15"
+theme_override_colors/font_color = Color(0.40, 0.92, 0.62, 1.0)
+theme_override_font_sizes/font_size = 10
+
+[node name="OdsName" type="Label" parent="Layout/Content"]
+layout_mode = 2
+text = "Vida Terrestre"
+autowrap_mode = 2
+theme_override_colors/font_color = Color(0.98, 0.99, 1.0, 1.0)
+theme_override_font_sizes/font_size = 8
+
+[node name="Divider" type="ColorRect" parent="Layout/Content"]
+custom_minimum_size = Vector2(0, 1)
+layout_mode = 2
+color = Color(0.20, 0.86, 0.50, 0.40)
+
+[node name="Fact1" type="Label" parent="Layout/Content"]
+layout_mode = 2
+text = "→  fato 1"
+autowrap_mode = 2
+theme_override_colors/font_color = Color(0.86, 0.90, 0.94, 1.0)
+theme_override_font_sizes/font_size = 6
+
+[node name="Fact2" type="Label" parent="Layout/Content"]
+layout_mode = 2
+text = "→  fato 2"
+autowrap_mode = 2
+theme_override_colors/font_color = Color(0.86, 0.90, 0.94, 1.0)
+theme_override_font_sizes/font_size = 6
+
+[node name="Gap" type="Control" parent="Layout/Content"]
+custom_minimum_size = Vector2(0, 3)
+layout_mode = 2
+
+[node name="ActionLabel" type="Label" parent="Layout/Content"]
+layout_mode = 2
+text = "O QUE VOCÊ PODE FAZER"
+theme_override_colors/font_color = Color(0.40, 0.92, 0.62, 1.0)
+theme_override_font_sizes/font_size = 5
+
+[node name="Action" type="Label" parent="Layout/Content"]
+layout_mode = 2
+text = "ação sugerida"
+autowrap_mode = 2
+theme_override_colors/font_color = Color(0.98, 0.99, 1.0, 1.0)
+theme_override_font_sizes/font_size = 8
+
+[node name="Spacer" type="Control" parent="Layout/Content"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Buttons" type="HBoxContainer" parent="Layout/Content"]
+layout_mode = 2
+theme_override_constants/separation = 6
+alignment = 1
+
+[node name="MenuButton" type="Button" parent="Layout/Content/Buttons"]
+layout_mode = 2
+flat = true
+theme_override_colors/font_color = Color(0.62, 0.66, 0.72, 1.0)
+theme_override_font_sizes/font_size = 6
+text = "← seleção"
+
+[node name="ContinueButton" type="Button" parent="Layout/Content/Buttons"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.40, 0.92, 0.62, 1.0)
+theme_override_font_sizes/font_size = 8
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn")
+theme_override_styles/hover = SubResource("StyleBoxFlat_btn")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_btn")
+theme_override_styles/focus = SubResource("StyleBoxFlat_btn")
+text = "PRÓXIMA FASE →"

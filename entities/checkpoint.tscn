@@ -1,0 +1,47 @@
+[gd_scene load_steps=3 format=3 uid="uid://dods0check001"]
+
+[ext_resource type="Script" path="res://scripts/checkpoint.gd" id="1_cp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cp"]
+size = Vector2(20, 48)
+
+[node name="Checkpoint" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_cp")
+
+[node name="BaseGlow" type="ColorRect" parent="."]
+offset_left = -10.0
+offset_top = -1.0
+offset_right = 10.0
+offset_bottom = 1.0
+color = Color(1.00, 0.95, 0.50, 0.95)
+
+[node name="Pole" type="ColorRect" parent="."]
+offset_left = -2.0
+offset_top = -44.0
+offset_right = 2.0
+offset_bottom = 0.0
+color = Color(0.42, 0.28, 0.18, 1.0)
+
+[node name="PoleTop" type="ColorRect" parent="."]
+offset_left = -4.0
+offset_top = -48.0
+offset_right = 4.0
+offset_bottom = -44.0
+color = Color(1.00, 0.88, 0.42, 1.0)
+
+[node name="Banner" type="Sprite2D" parent="."]
+position = Vector2(10, -36)
+scale = Vector2(2, 2)
+
+[node name="Glow" type="ColorRect" parent="."]
+offset_left = -14.0
+offset_top = 1.0
+offset_right = 14.0
+offset_bottom = 3.0
+color = Color(0.40, 0.92, 0.62, 0.85)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -22)
+shape = SubResource("RectangleShape2D_cp")

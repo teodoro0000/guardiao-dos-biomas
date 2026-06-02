@@ -1,0 +1,58 @@
+[gd_scene load_steps=2 format=4 uid="uid://dods0select0001"]
+
+[ext_resource type="Script" path="res://scripts/level_select.gd" id="1_sel"]
+
+[node name="LevelSelect" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("1_sel")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.04, 0.06, 0.08, 1.0)
+
+[node name="Layout" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Content" type="VBoxContainer" parent="Layout"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="Eyebrow" type="Label" parent="Layout/Content"]
+layout_mode = 2
+text = "ESCOLHA SEU DESAFIO"
+horizontal_alignment = 1
+theme_override_colors/font_color = Color(0.40, 0.92, 0.62, 1.0)
+theme_override_font_sizes/font_size = 6
+
+[node name="Title" type="Label" parent="Layout/Content"]
+layout_mode = 2
+text = "TRES BIOMAS, TRES ODS"
+horizontal_alignment = 1
+theme_override_colors/font_color = Color(0.98, 0.99, 1.0, 1.0)
+theme_override_font_sizes/font_size = 8
+
+[node name="Gap" type="Control" parent="Layout/Content"]
+custom_minimum_size = Vector2(0, 4)
+layout_mode = 2
+
+[node name="Cards" type="HBoxContainer" parent="Layout/Content"]
+layout_mode = 2
+theme_override_constants/separation = 6
+alignment = 1
+
+[node name="BackButton" type="Button" parent="Layout/Content"]
+layout_mode = 2
+size_flags_horizontal = 4
+flat = true
+theme_override_colors/font_color = Color(0.62, 0.66, 0.72, 1.0)
+theme_override_font_sizes/font_size = 7
+text = "← voltar"

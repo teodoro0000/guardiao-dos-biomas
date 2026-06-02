@@ -1,0 +1,200 @@
+[gd_scene format=3 uid="uid://dods0vict001"]
+
+[ext_resource type="Script" path="res://scripts/victory.gd" id="1_v"]
+[ext_resource type="Texture2D" path="res://sprites/0x72_DungeonTilesetii_v1.7/frames/chest_full_open_anim_f0.png" id="2_c0"]
+[ext_resource type="Texture2D" path="res://sprites/0x72_DungeonTilesetii_v1.7/frames/chest_full_open_anim_f1.png" id="2_c1"]
+[ext_resource type="Texture2D" path="res://sprites/0x72_DungeonTilesetii_v1.7/frames/chest_full_open_anim_f2.png" id="2_c2"]
+[ext_resource type="Texture2D" path="res://sprites/0x72_DungeonTilesetii_v1.7/frames/coin_anim_f0.png" id="3_co0"]
+[ext_resource type="Texture2D" path="res://sprites/0x72_DungeonTilesetii_v1.7/frames/coin_anim_f1.png" id="3_co1"]
+[ext_resource type="Texture2D" path="res://sprites/0x72_DungeonTilesetii_v1.7/frames/coin_anim_f2.png" id="3_co2"]
+[ext_resource type="Texture2D" path="res://sprites/0x72_DungeonTilesetii_v1.7/frames/coin_anim_f3.png" id="3_co3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btn"]
+bg_color = Color(0.08, 0.10, 0.12, 1.0)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1.00, 0.78, 0.30, 0.85)
+content_margin_left = 10.0
+content_margin_top = 5.0
+content_margin_right = 10.0
+content_margin_bottom = 5.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_chest"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_c0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_c1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_c2")
+}],
+"loop": false,
+"name": &"default",
+"speed": 4.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_coin"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_co0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_co1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_co2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_co3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[node name="Victory" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("1_v")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.05, 0.04, 0.10, 1.0)
+
+[node name="GoldWash" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.98, 0.72, 0.30, 0.10)
+
+[node name="TopAccent" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 10.0
+offset_bottom = 11.0
+color = Color(1.00, 0.78, 0.30, 0.85)
+
+[node name="BottomAccent" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -11.0
+offset_bottom = -10.0
+color = Color(1.00, 0.78, 0.30, 0.85)
+
+[node name="Center" type="Node2D" parent="."]
+position = Vector2(150, 90)
+
+[node name="Chest" type="AnimatedSprite2D" parent="Center"]
+position = Vector2(0, 0)
+scale = Vector2(3.0, 3.0)
+sprite_frames = SubResource("SpriteFrames_chest")
+animation = &"default"
+autoplay = "default"
+
+[node name="CoinA" type="AnimatedSprite2D" parent="Center"]
+position = Vector2(-28, -6)
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_coin")
+animation = &"default"
+autoplay = "default"
+
+[node name="CoinB" type="AnimatedSprite2D" parent="Center"]
+position = Vector2(0, -14)
+scale = Vector2(1.8, 1.8)
+sprite_frames = SubResource("SpriteFrames_coin")
+animation = &"default"
+autoplay = "default"
+
+[node name="CoinC" type="AnimatedSprite2D" parent="Center"]
+position = Vector2(28, -6)
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_coin")
+animation = &"default"
+autoplay = "default"
+
+[node name="Layout" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 12.0
+offset_top = 14.0
+offset_right = -12.0
+offset_bottom = -12.0
+theme_override_constants/separation = 4
+alignment = 1
+
+[node name="Eyebrow" type="Label" parent="Layout"]
+custom_minimum_size = Vector2(0, 9)
+layout_mode = 2
+text = "GUARDIÃO DOS BIOMAS"
+horizontal_alignment = 1
+vertical_alignment = 1
+theme_override_colors/font_color = Color(1.00, 0.78, 0.30, 1.0)
+theme_override_font_sizes/font_size = 5
+
+[node name="Gap1" type="Control" parent="Layout"]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Layout"]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+text = "VITÓRIA!"
+horizontal_alignment = 1
+vertical_alignment = 1
+theme_override_colors/font_color = Color(1.00, 0.95, 0.66, 1.0)
+theme_override_font_sizes/font_size = 14
+
+[node name="Spacer1" type="Control" parent="Layout"]
+custom_minimum_size = Vector2(0, 110)
+layout_mode = 2
+
+[node name="Subtitle" type="Label" parent="Layout"]
+layout_mode = 2
+text = "você venceu o vazio."
+horizontal_alignment = 1
+theme_override_colors/font_color = Color(0.96, 0.94, 0.88, 1.0)
+theme_override_font_sizes/font_size = 6
+
+[node name="Gap2" type="Control" parent="Layout"]
+custom_minimum_size = Vector2(0, 3)
+layout_mode = 2
+
+[node name="Message" type="Label" parent="Layout"]
+layout_mode = 2
+text = "o planeta agradece."
+horizontal_alignment = 1
+theme_override_colors/font_color = Color(0.86, 0.90, 0.94, 1.0)
+theme_override_font_sizes/font_size = 5
+
+[node name="Spacer2" type="Control" parent="Layout"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ContinueButton" type="Button" parent="Layout"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(1.00, 0.78, 0.30, 1.0)
+theme_override_font_sizes/font_size = 7
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn")
+theme_override_styles/hover = SubResource("StyleBoxFlat_btn")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_btn")
+theme_override_styles/focus = SubResource("StyleBoxFlat_btn")
+text = "VER CRÉDITOS →"

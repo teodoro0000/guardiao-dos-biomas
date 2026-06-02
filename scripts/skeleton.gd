@@ -7,6 +7,14 @@ enum SkeletonState {
 }
 
 const SPINNING_BONE = preload("res://entities/spinning_bone.tscn")
+const KENNEY_ATLAS_PATH := "res://kenney_pixel-platformer/Tilemap/tilemap-characters_packed.png"
+
+@export var enemy_sprite_region: Rect2 = Rect2(0, 0, 0, 0)
+@export var enemy_tint: Color = Color(1, 1, 1, 1)
+@export var enemy_sprite_offset_y: float = 4.0
+@export var external_frame_base: String = ""
+@export var external_frame_count: int = 0
+@export var external_frame_speed: float = 6.0
 
 @onready var anim: AnimatedSprite2D = $AnimatedSprite2D
 @onready var hitbox: Area2D = $Hitbox
@@ -24,7 +32,66 @@ var direction = 1
 var can_throw = true
 
 func _ready() -> void:
+	_apply_enemy_sprite()
 	go_to_walk_state()
+
+func _apply_enemy_sprite() -> void:
+	if external_frame_base != "" and external_frame_count > 0:
+		_apply_external_frames()
+		return
+	if enemy_sprite_region.size == Vector2.ZERO:
+		return
+	_apply_kenney_atlas()
+
+func _apply_kenney_atlas() -> void:
+	if not ResourceLoader.exists(KENNEY_ATLAS_PATH):
+		return
+	var atlas: Texture2D = load(KENNEY_ATLAS_PATH)
+	if atlas == null:
+		return
+	var sf := SpriteFrames.new()
+	for anim_name in ["walk", "attack", "hurt"]:
+		sf.add_animation(anim_name)
+		sf.set_animation_loop(anim_name, anim_name == "walk")
+		sf.set_animation_speed(anim_name, 4.0 if anim_name == "walk" else 5.0)
+		var tex := AtlasTexture.new()
+		tex.atlas = atlas
+		tex.region = enemy_sprite_region
+		tex.filter_clip = true
+		sf.add_frame(anim_name, tex)
+	if sf.has_animation("default"):
+		sf.remove_animation("default")
+	anim.sprite_frames = sf
+	anim.position.y += enemy_sprite_offset_y
+	anim.modulate = enemy_tint
+	# Static sprite — fake "alive" feel with vertical bobbing.
+	var tween := create_tween().set_loops()
+	tween.tween_property(anim, "position:y", anim.position.y - 1.0, 0.4).set_trans(Tween.TRANS_SINE)
+	tween.tween_property(anim, "position:y", anim.position.y, 0.4).set_trans(Tween.TRANS_SINE)
+
+func _apply_external_frames() -> void:
+	var frames: Array[Texture2D] = []
+	for i in range(external_frame_count):
+		var path: String = "%s%d.png" % [external_frame_base, i]
+		if not ResourceLoader.exists(path):
+			continue
+		var tex: Texture2D = load(path) as Texture2D
+		if tex != null:
+			frames.append(tex)
+	if frames.is_empty():
+		return
+	var sf := SpriteFrames.new()
+	for anim_name in ["walk", "attack", "hurt"]:
+		sf.add_animation(anim_name)
+		sf.set_animation_loop(anim_name, anim_name != "hurt")
+		sf.set_animation_speed(anim_name, external_frame_speed)
+		for tex in frames:
+			sf.add_frame(anim_name, tex)
+	if sf.has_animation("default"):
+		sf.remove_animation("default")
+	anim.sprite_frames = sf
+	anim.position.y += enemy_sprite_offset_y
+	anim.modulate = enemy_tint
 
 func _physics_process(delta: float) -> void:
 

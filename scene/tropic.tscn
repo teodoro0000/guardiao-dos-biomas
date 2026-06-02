@@ -1,5 +1,8 @@
-[gd_scene load_steps=17 format=4 uid="uid://c8yhqpob56plw"]
+[gd_scene load_steps=20 format=4 uid="uid://c8yhqpob56plw"]
 
+[ext_resource type="Script" path="res://scripts/level.gd" id="0_lvl"]
+[ext_resource type="PackedScene" uid="uid://dods0trash001" path="res://entities/trash_item.tscn" id="0_trash"]
+[ext_resource type="PackedScene" uid="uid://dods0bin001" path="res://entities/trash_bin.tscn" id="0_bin"]
 [ext_resource type="PackedScene" uid="uid://b4uyanguafauh" path="res://entities/player.tscn" id="1_bmxgx"]
 [ext_resource type="TileSet" uid="uid://ci6yocecub5y3" path="res://tiles/terrain.tres" id="2_ry6l7"]
 [ext_resource type="TileSet" uid="uid://ckf2afy4m5an6" path="res://tiles/decoration.tres" id="3_ry6l7"]
@@ -14,6 +17,9 @@
 [ext_resource type="PackedScene" uid="uid://nm82sifvd23i" path="res://entities/level_end.tscn" id="10_d18o5"]
 [ext_resource type="PackedScene" uid="uid://bes2p46skt65p" path="res://entities/skeleton.tscn" id="11_t8vtq"]
 [ext_resource type="PackedScene" uid="uid://7dkaekrflgga" path="res://entities/moving_platform.tscn" id="14_xflqb"]
+[ext_resource type="PackedScene" uid="uid://dods0boss0001" path="res://entities/boss.tscn" id="15_boss_t"]
+[ext_resource type="PackedScene" uid="uid://dods0check001" path="res://entities/checkpoint.tscn" id="16_cp_t"]
+[ext_resource type="PackedScene" uid="uid://dods0life001" path="res://entities/life_pickup.tscn" id="17_lp_t"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_d18o5"]
 animations = [{
@@ -32,9 +38,20 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d18o5"]
 size = Vector2(20, 192)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wall"]
+size = Vector2(24, 600)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_safety"]
+size = Vector2(2400, 16)
+
 [node name="Tropic" type="Node2D"]
 metadata/_edit_vertical_guides_ = [520.0]
 metadata/_edit_horizontal_guides_ = [368.0]
+script = ExtResource("0_lvl")
+level_id = "tropic"
+extend_tilemaps = true
+extension_offset_x = 540.0
+extension_count = 1
 
 [node name="TileMaps" type="Node" parent="."]
 
@@ -118,15 +135,74 @@ region_rect = Rect2(0, 0, 576, 208)
 
 [node name="Camera" parent="." instance=ExtResource("9_34ia6")]
 position = Vector2(49, 118)
-limit_right = 520
+limit_right = 1200
 limit_bottom = 368
 
 [node name="Player" parent="." instance=ExtResource("1_bmxgx")]
 position = Vector2(43, 161)
 
 [node name="LevelEnd" parent="." instance=ExtResource("10_d18o5")]
-position = Vector2(541, 139)
-next_level = "forest"
+position = Vector2(1170, 139)
+require_all_collectibles = true
+require_boss_defeated = true
+
+[node name="TrashPlastic1" parent="." instance=ExtResource("0_trash")]
+position = Vector2(100, 150)
+type_id = "plastic"
+tint = Color(0.46, 0.80, 1.00, 1.0)
+
+[node name="TrashPlastic2" parent="." instance=ExtResource("0_trash")]
+position = Vector2(200, 100)
+type_id = "plastic"
+tint = Color(0.46, 0.80, 1.00, 1.0)
+
+[node name="TrashOrganic1" parent="." instance=ExtResource("0_trash")]
+position = Vector2(310, 60)
+type_id = "organic"
+tint = Color(0.50, 0.92, 0.55, 1.0)
+
+[node name="TrashGlass1" parent="." instance=ExtResource("0_trash")]
+position = Vector2(380, 150)
+type_id = "glass"
+tint = Color(1.00, 0.85, 0.30, 1.0)
+
+[node name="TrashGlass2" parent="." instance=ExtResource("0_trash")]
+position = Vector2(150, 80)
+type_id = "glass"
+tint = Color(1.00, 0.85, 0.30, 1.0)
+
+[node name="TrashPlastic3" parent="." instance=ExtResource("0_trash")]
+position = Vector2(680, 150)
+type_id = "plastic"
+tint = Color(0.46, 0.80, 1.00, 1.0)
+
+[node name="TrashOrganic2" parent="." instance=ExtResource("0_trash")]
+position = Vector2(820, 80)
+type_id = "organic"
+tint = Color(0.50, 0.92, 0.55, 1.0)
+
+[node name="TrashGlass3" parent="." instance=ExtResource("0_trash")]
+position = Vector2(960, 140)
+type_id = "glass"
+tint = Color(1.00, 0.85, 0.30, 1.0)
+
+[node name="BinPlastic" parent="." instance=ExtResource("0_bin")]
+position = Vector2(1060, 152)
+accepts = "plastic"
+tint = Color(0.46, 0.80, 1.00, 1.0)
+label_text = "PLÁSTICO"
+
+[node name="BinOrganic" parent="." instance=ExtResource("0_bin")]
+position = Vector2(1090, 152)
+accepts = "organic"
+tint = Color(0.50, 0.92, 0.55, 1.0)
+label_text = "ORGÂNICO"
+
+[node name="BinGlass" parent="." instance=ExtResource("0_bin")]
+position = Vector2(1120, 152)
+accepts = "glass"
+tint = Color(1.00, 0.85, 0.30, 1.0)
+label_text = "VIDRO"
 
 [node name="CollisionShape2D" parent="LevelEnd" index="0"]
 position = Vector2(0, -61)
@@ -134,6 +210,57 @@ shape = SubResource("RectangleShape2D_d18o5")
 
 [node name="Skeleton" parent="." instance=ExtResource("11_t8vtq")]
 position = Vector2(251, 160)
+external_frame_base = "res://sprites/0x72_DungeonTilesetii_v1.7/frames/slug_anim_f"
+external_frame_count = 4
+external_frame_speed = 6.0
+enemy_sprite_offset_y = 6.0
+enemy_tint = Color(0.85, 0.95, 1.10, 1.0)
+
+[node name="Skeleton2" parent="." instance=ExtResource("11_t8vtq")]
+position = Vector2(540, 160)
+external_frame_base = "res://sprites/0x72_DungeonTilesetii_v1.7/frames/slug_anim_f"
+external_frame_count = 4
+external_frame_speed = 6.0
+enemy_sprite_offset_y = 6.0
+enemy_tint = Color(0.85, 0.95, 1.10, 1.0)
+
+[node name="Skeleton3" parent="." instance=ExtResource("11_t8vtq")]
+position = Vector2(720, 160)
+external_frame_base = "res://sprites/0x72_DungeonTilesetii_v1.7/frames/slug_anim_f"
+external_frame_count = 4
+external_frame_speed = 6.0
+enemy_sprite_offset_y = 6.0
+enemy_tint = Color(0.85, 0.95, 1.10, 1.0)
+
+[node name="Skeleton4" parent="." instance=ExtResource("11_t8vtq")]
+position = Vector2(880, 160)
+external_frame_base = "res://sprites/0x72_DungeonTilesetii_v1.7/frames/slug_anim_f"
+external_frame_count = 4
+external_frame_speed = 6.0
+enemy_sprite_offset_y = 6.0
+enemy_tint = Color(0.85, 0.95, 1.10, 1.0)
+
+[node name="Checkpoint1" parent="." instance=ExtResource("16_cp_t")]
+position = Vector2(400, 176)
+banner_color = "yellow"
+
+[node name="Checkpoint2" parent="." instance=ExtResource("16_cp_t")]
+position = Vector2(800, 176)
+banner_color = "yellow"
+
+[node name="LifePickup1" parent="." instance=ExtResource("17_lp_t")]
+position = Vector2(620, 160)
+
+[node name="Boss" parent="." instance=ExtResource("15_boss_t")]
+position = Vector2(1000, 140)
+level_id = "tropic"
+max_hp = 4
+tint = Color(0.85, 0.95, 1.10, 1.0)
+external_run_base = "res://sprites/0x72_DungeonTilesetii_v1.7/frames/big_zombie_run_anim_f"
+external_run_count = 4
+external_idle_base = "res://sprites/0x72_DungeonTilesetii_v1.7/frames/big_zombie_idle_anim_f"
+external_idle_count = 4
+external_frame_speed = 6.0
 
 [node name="MovingPlatform" parent="." instance=ExtResource("14_xflqb")]
 position = Vector2(55, 137)
@@ -148,6 +275,28 @@ time = 2
 
 [node name="Target" parent="MovingPlatform2" index="1"]
 position = Vector2(158, 0)
+
+[node name="LimitLeft" type="StaticBody2D" parent="."]
+collision_layer = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LimitLeft"]
+position = Vector2(-4, 100)
+shape = SubResource("RectangleShape2D_wall")
+
+[node name="LimitRight" type="StaticBody2D" parent="."]
+collision_layer = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LimitRight"]
+position = Vector2(1200, 100)
+shape = SubResource("RectangleShape2D_wall")
+
+[node name="SafetyFloor" type="Area2D" parent="." groups=["LethalArea"]]
+collision_layer = 16
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SafetyFloor"]
+position = Vector2(600, 400)
+shape = SubResource("RectangleShape2D_safety")
 
 [editable path="LevelEnd"]
 [editable path="MovingPlatform"]

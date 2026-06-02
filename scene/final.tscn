@@ -1,0 +1,206 @@
+[gd_scene format=4 uid="uid://dods0final001"]
+
+[ext_resource type="Script" path="res://scripts/level.gd" id="0_lvl"]
+[ext_resource type="PackedScene" uid="uid://b4uyanguafauh" path="res://entities/player.tscn" id="1_pl"]
+[ext_resource type="PackedScene" uid="uid://cdtr6sp6pckop" path="res://entities/camera.tscn" id="2_cam"]
+[ext_resource type="PackedScene" uid="uid://fkvl4a5gpra3" path="res://entities/boss_super.tscn" id="3_bs"]
+[ext_resource type="Texture2D" path="res://sprites/0x72_DungeonTilesetii_v1.7/frames/floor_1.png" id="4_flr"]
+[ext_resource type="Texture2D" path="res://sprites/0x72_DungeonTilesetii_v1.7/frames/wall_top_mid.png" id="5_wall"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_floor"]
+size = Vector2(620, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wall"]
+size = Vector2(24, 400)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_void"]
+size = Vector2(1200, 8)
+
+[node name="Final" type="Node2D"]
+script = ExtResource("0_lvl")
+level_id = "final"
+
+[node name="Background" type="ColorRect" parent="."]
+offset_left = -10.0
+offset_top = -10.0
+offset_right = 620.0
+offset_bottom = 220.0
+color = Color(0.04, 0.02, 0.05, 1.0)
+
+[node name="SkyGradient" type="ColorRect" parent="."]
+offset_left = -10.0
+offset_top = -10.0
+offset_right = 620.0
+offset_bottom = 90.0
+color = Color(0.18, 0.04, 0.08, 0.85)
+
+[node name="HorizonGlow" type="ColorRect" parent="."]
+offset_left = -10.0
+offset_top = 130.0
+offset_right = 620.0
+offset_bottom = 175.0
+color = Color(0.95, 0.32, 0.18, 0.32)
+
+[node name="HorizonLine" type="ColorRect" parent="."]
+offset_left = -10.0
+offset_top = 173.0
+offset_right = 620.0
+offset_bottom = 174.0
+color = Color(1.0, 0.42, 0.30, 0.85)
+
+[node name="MoonHalo" type="ColorRect" parent="."]
+offset_left = 460.0
+offset_top = 16.0
+offset_right = 510.0
+offset_bottom = 66.0
+color = Color(1.0, 0.28, 0.30, 0.15)
+
+[node name="Moon" type="ColorRect" parent="."]
+offset_left = 472.0
+offset_top = 28.0
+offset_right = 498.0
+offset_bottom = 54.0
+color = Color(0.96, 0.42, 0.32, 0.95)
+
+[node name="Stars" type="Node2D" parent="."]
+
+[node name="S1" type="ColorRect" parent="Stars"]
+offset_left = 28.0
+offset_top = 20.0
+offset_right = 29.0
+offset_bottom = 21.0
+color = Color(1.0, 0.85, 0.85, 0.85)
+
+[node name="S2" type="ColorRect" parent="Stars"]
+offset_left = 78.0
+offset_top = 12.0
+offset_right = 79.0
+offset_bottom = 13.0
+color = Color(1.0, 0.86, 0.86, 0.70)
+
+[node name="S3" type="ColorRect" parent="Stars"]
+offset_left = 132.0
+offset_top = 34.0
+offset_right = 133.0
+offset_bottom = 35.0
+color = Color(1.0, 0.85, 0.85, 0.80)
+
+[node name="S4" type="ColorRect" parent="Stars"]
+offset_left = 196.0
+offset_top = 8.0
+offset_right = 197.0
+offset_bottom = 9.0
+color = Color(1.0, 0.86, 0.86, 0.90)
+
+[node name="S5" type="ColorRect" parent="Stars"]
+offset_left = 250.0
+offset_top = 24.0
+offset_right = 251.0
+offset_bottom = 25.0
+color = Color(1.0, 0.85, 0.85, 0.70)
+
+[node name="S6" type="ColorRect" parent="Stars"]
+offset_left = 300.0
+offset_top = 14.0
+offset_right = 301.0
+offset_bottom = 15.0
+color = Color(1.0, 0.86, 0.86, 0.85)
+
+[node name="S7" type="ColorRect" parent="Stars"]
+offset_left = 360.0
+offset_top = 32.0
+offset_right = 361.0
+offset_bottom = 33.0
+color = Color(1.0, 0.85, 0.85, 0.75)
+
+[node name="S8" type="ColorRect" parent="Stars"]
+offset_left = 412.0
+offset_top = 20.0
+offset_right = 413.0
+offset_bottom = 21.0
+color = Color(1.0, 0.86, 0.86, 0.80)
+
+[node name="S9" type="ColorRect" parent="Stars"]
+offset_left = 548.0
+offset_top = 36.0
+offset_right = 549.0
+offset_bottom = 37.0
+color = Color(1.0, 0.85, 0.85, 0.85)
+
+[node name="DistantMountains" type="ColorRect" parent="."]
+offset_left = -20.0
+offset_top = 100.0
+offset_right = 620.0
+offset_bottom = 174.0
+color = Color(0.08, 0.04, 0.08, 1.0)
+
+[node name="Camera" parent="." instance=ExtResource("2_cam")]
+position = Vector2(300, 120)
+limit_left = 0
+limit_top = 0
+limit_right = 600
+limit_bottom = 200
+
+[node name="Player" parent="." instance=ExtResource("1_pl")]
+position = Vector2(60, 160)
+
+[node name="Floor" type="StaticBody2D" parent="."]
+position = Vector2(300, 184)
+collision_layer = 1
+collision_mask = 2
+
+[node name="WallTopBorder" type="Sprite2D" parent="Floor"]
+texture_repeat = 2
+texture = ExtResource("5_wall")
+centered = false
+position = Vector2(-310, -16)
+region_enabled = true
+region_rect = Rect2(0, 0, 620, 16)
+
+[node name="Sprite" type="Sprite2D" parent="Floor"]
+texture_repeat = 2
+texture = ExtResource("4_flr")
+centered = false
+position = Vector2(-310, -8)
+region_enabled = true
+region_rect = Rect2(0, 0, 620, 16)
+
+[node name="Glow" type="ColorRect" parent="Floor"]
+offset_left = -310.0
+offset_top = -17.0
+offset_right = 310.0
+offset_bottom = -16.0
+color = Color(0.95, 0.34, 0.30, 0.85)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+shape = SubResource("RectangleShape2D_floor")
+
+[node name="BossSuper" parent="." instance=ExtResource("3_bs")]
+position = Vector2(440, 80)
+level_id = "final"
+max_hp = 8
+altitude_y = 80.0
+floor_y = 162.0
+tint = Color(1.0, 0.85, 0.80, 1.0)
+
+[node name="LimitLeft" type="StaticBody2D" parent="."]
+collision_layer = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LimitLeft"]
+position = Vector2(-4, 100)
+shape = SubResource("RectangleShape2D_wall")
+
+[node name="LimitRight" type="StaticBody2D" parent="."]
+collision_layer = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LimitRight"]
+position = Vector2(604, 100)
+shape = SubResource("RectangleShape2D_wall")
+
+[node name="VoidBelow" type="Area2D" parent="." groups=["LethalArea"]]
+position = Vector2(300, 230)
+collision_layer = 16
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="VoidBelow"]
+shape = SubResource("RectangleShape2D_void")
