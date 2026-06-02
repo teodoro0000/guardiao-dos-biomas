@@ -1,9 +1,9 @@
 extends Area2D
 
 const SPRITE_BY_TYPE := {
-	"plastic": "res://sprites/Items/item_plastic.png",
-	"organic": "res://sprites/Items/item_organic.png",
-	"glass":   "res://sprites/Items/item_glass.png",
+	"plastic": preload("res://sprites/Items/item_plastic.png"),
+	"organic": preload("res://sprites/Items/item_organic.png"),
+	"glass":   preload("res://sprites/Items/item_glass.png"),
 }
 const ITEM_SCALE: float = 0.035
 
@@ -29,10 +29,7 @@ func _ready() -> void:
 	collision_shape.scale = Vector2(radius_mul, radius_mul)
 
 func _apply_sprite() -> bool:
-	var path: String = SPRITE_BY_TYPE.get(type_id, "")
-	if path == "" or not ResourceLoader.exists(path):
-		return false
-	var tex: Texture2D = load(path) as Texture2D
+	var tex: Texture2D = SPRITE_BY_TYPE.get(type_id, null)
 	if tex == null:
 		return false
 	sprite.texture = tex

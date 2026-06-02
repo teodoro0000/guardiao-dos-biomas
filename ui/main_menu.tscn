@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=4 uid="uid://dods0mmenu0001"]
+[gd_scene load_steps=5 format=4]
 
 [ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_mm"]
 [ext_resource type="Texture2D" path="res://sprites/Backgrounds/backgrounds_atlas.png" id="2_bg_atlas"]

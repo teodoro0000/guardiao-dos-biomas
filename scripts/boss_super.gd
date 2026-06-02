@@ -9,13 +9,12 @@ enum BossState {
 	defeated
 }
 
-const SPRITE_BASE := "res://sprites/Enemy3/Enemy3-No-Movement-In-Animation/"
 const ANIM_SPECS := [
-	{"name": "idle",   "file": "Enemy3No-Move-Idle.png",            "frames": 8,  "speed": 8.0,  "loop": true},
-	{"name": "fly",    "file": "Enemy3No-Move-Fly.png",             "frames": 8,  "speed": 10.0, "loop": true},
-	{"name": "attack", "file": "Enemy3No-Move-AttackSmashLoop.png", "frames": 3,  "speed": 10.0, "loop": true},
-	{"name": "hurt",   "file": "Enemy3No-Move-Hit.png",             "frames": 4,  "speed": 12.0, "loop": false},
-	{"name": "die",    "file": "Enemy3No-Move-Die.png",             "frames": 17, "speed": 14.0, "loop": false},
+	{"name": "idle",   "sheet": preload("res://sprites/Enemy3/Enemy3-No-Movement-In-Animation/Enemy3No-Move-Idle.png"),            "frames": 8,  "speed": 8.0,  "loop": true},
+	{"name": "fly",    "sheet": preload("res://sprites/Enemy3/Enemy3-No-Movement-In-Animation/Enemy3No-Move-Fly.png"),             "frames": 8,  "speed": 10.0, "loop": true},
+	{"name": "attack", "sheet": preload("res://sprites/Enemy3/Enemy3-No-Movement-In-Animation/Enemy3No-Move-AttackSmashLoop.png"), "frames": 3,  "speed": 10.0, "loop": true},
+	{"name": "hurt",   "sheet": preload("res://sprites/Enemy3/Enemy3-No-Movement-In-Animation/Enemy3No-Move-Hit.png"),             "frames": 4,  "speed": 12.0, "loop": false},
+	{"name": "die",    "sheet": preload("res://sprites/Enemy3/Enemy3-No-Movement-In-Animation/Enemy3No-Move-Die.png"),             "frames": 17, "speed": 14.0, "loop": false},
 ]
 
 @export var level_id: String = "final"
@@ -57,10 +56,7 @@ func _ready() -> void:
 func _build_sprite_frames() -> void:
 	var sf := SpriteFrames.new()
 	for spec in ANIM_SPECS:
-		var path: String = SPRITE_BASE + spec["file"]
-		if not ResourceLoader.exists(path):
-			continue
-		var sheet: Texture2D = load(path) as Texture2D
+		var sheet: Texture2D = spec["sheet"]
 		if sheet == null:
 			continue
 		sf.add_animation(spec["name"])

@@ -1,9 +1,9 @@
 extends Area2D
 
 const SPRITE_BY_LEVEL := {
-	"forest": "res://sprites/Items/seed.png",
-	"tropic": "res://sprites/Items/recyclable.png",
-	"energy": "res://sprites/Items/battery.png",
+	"forest": preload("res://sprites/Items/seed.png"),
+	"tropic": preload("res://sprites/Items/item_plastic.png"),
+	"energy": preload("res://sprites/Items/battery.png"),
 }
 const COLLECTIBLE_SCALE: float = 0.035
 
@@ -22,10 +22,7 @@ func _ready() -> void:
 	_apply_sprite()
 
 func _apply_sprite() -> void:
-	var path: String = SPRITE_BY_LEVEL.get(GameState.current_level_id, "")
-	if path == "" or not ResourceLoader.exists(path):
-		return
-	var tex: Texture2D = load(path) as Texture2D
+	var tex: Texture2D = SPRITE_BY_LEVEL.get(GameState.current_level_id, null)
 	if tex == null:
 		return
 	sprite.texture = tex

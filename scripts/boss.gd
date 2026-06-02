@@ -80,17 +80,9 @@ func _apply_external_frames() -> void:
 	anim.sprite_frames = sf
 
 func _load_frames(base: String, count: int) -> Array[Texture2D]:
-	var out: Array[Texture2D] = []
 	if base == "" or count <= 0:
-		return out
-	for i in range(count):
-		var path: String = "%s%d.png" % [base, i]
-		if not ResourceLoader.exists(path):
-			continue
-		var tex: Texture2D = load(path) as Texture2D
-		if tex != null:
-			out.append(tex)
-	return out
+		return []
+	return SpriteBank.get_frames(base, count)
 
 func _physics_process(delta: float) -> void:
 	if status == BossState.defeated:

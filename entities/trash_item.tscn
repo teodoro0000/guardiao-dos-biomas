@@ -1,4 +1,4 @@
-[gd_scene format=4 uid="uid://dods0trash001"]
+[gd_scene format=4]
 
 [ext_resource type="Script" path="res://scripts/trash_item.gd" id="1_ti"]
 [ext_resource type="Texture2D" uid="uid://cysnwswt3muot" path="res://sprites/1 - Penguin/Idle (16 x 16).png" id="2_ti"]

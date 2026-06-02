@@ -1,7 +1,7 @@
 [gd_scene load_steps=21 format=4 uid="uid://byo1oohh1d26d"]
 
 [ext_resource type="Script" path="res://scripts/level.gd" id="0_lvl"]
-[ext_resource type="PackedScene" uid="uid://dods0coll0001" path="res://entities/collectible.tscn" id="0_col"]
+[ext_resource type="PackedScene" path="res://entities/collectible.tscn" id="0_col"]
 [ext_resource type="PackedScene" uid="uid://b4uyanguafauh" path="res://entities/player.tscn" id="1_e2knd"]
 [ext_resource type="TileSet" uid="uid://ci6yocecub5y3" path="res://tiles/terrain.tres" id="2_2xpkg"]
 [ext_resource type="Texture2D" uid="uid://dy5vygtus60gg" path="res://sprites/Seasonal Tilesets/2 - Autumn Forest/Background parts/6 - Distant_trees.png" id="3_gbfvw"]
@@ -16,9 +16,9 @@
 [ext_resource type="PackedScene" uid="uid://cdtr6sp6pckop" path="res://entities/camera.tscn" id="9_jo4av"]
 [ext_resource type="PackedScene" uid="uid://nm82sifvd23i" path="res://entities/level_end.tscn" id="12_64es3"]
 [ext_resource type="PackedScene" uid="uid://bes2p46skt65p" path="res://entities/skeleton.tscn" id="13_kmspj"]
-[ext_resource type="PackedScene" uid="uid://dods0boss0001" path="res://entities/boss.tscn" id="14_boss_f"]
-[ext_resource type="PackedScene" uid="uid://dods0check001" path="res://entities/checkpoint.tscn" id="15_cp_f"]
-[ext_resource type="PackedScene" uid="uid://dods0life001" path="res://entities/life_pickup.tscn" id="16_lp_f"]
+[ext_resource type="PackedScene" path="res://entities/boss.tscn" id="14_boss_f"]
+[ext_resource type="PackedScene" path="res://entities/checkpoint.tscn" id="15_cp_f"]
+[ext_resource type="PackedScene" path="res://entities/life_pickup.tscn" id="16_lp_f"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gwku7"]
 texture = ExtResource("3_jxvlp")
@@ -214,7 +214,7 @@ shape = SubResource("RectangleShape2D_kmspj")
 
 [node name="Skeleton2" parent="." instance=ExtResource("13_kmspj")]
 position = Vector2(166, 144)
-external_frame_base = "res://sprites/0x72_DungeonTilesetii_v1.7/frames/muddy_anim_f"
+external_frame_base = "res://sprites/0x72_DungeonTilesetII_v1.7/frames/muddy_anim_f"
 external_frame_count = 2
 external_frame_speed = 4.0
 enemy_sprite_offset_y = 6.0
@@ -222,7 +222,7 @@ enemy_tint = Color(0.85, 1.0, 0.85, 1.0)
 
 [node name="Skeleton3" parent="." instance=ExtResource("13_kmspj")]
 position = Vector2(292, 141)
-external_frame_base = "res://sprites/0x72_DungeonTilesetii_v1.7/frames/muddy_anim_f"
+external_frame_base = "res://sprites/0x72_DungeonTilesetII_v1.7/frames/muddy_anim_f"
 external_frame_count = 2
 external_frame_speed = 4.0
 enemy_sprite_offset_y = 6.0
@@ -230,7 +230,7 @@ enemy_tint = Color(0.85, 1.0, 0.85, 1.0)
 
 [node name="Skeleton4" parent="." instance=ExtResource("13_kmspj")]
 position = Vector2(620, 144)
-external_frame_base = "res://sprites/0x72_DungeonTilesetii_v1.7/frames/muddy_anim_f"
+external_frame_base = "res://sprites/0x72_DungeonTilesetII_v1.7/frames/muddy_anim_f"
 external_frame_count = 2
 external_frame_speed = 4.0
 enemy_sprite_offset_y = 6.0
@@ -238,7 +238,7 @@ enemy_tint = Color(0.85, 1.0, 0.85, 1.0)
 
 [node name="Skeleton5" parent="." instance=ExtResource("13_kmspj")]
 position = Vector2(820, 144)
-external_frame_base = "res://sprites/0x72_DungeonTilesetii_v1.7/frames/muddy_anim_f"
+external_frame_base = "res://sprites/0x72_DungeonTilesetII_v1.7/frames/muddy_anim_f"
 external_frame_count = 2
 external_frame_speed = 4.0
 enemy_sprite_offset_y = 6.0
@@ -246,7 +246,7 @@ enemy_tint = Color(0.85, 1.0, 0.85, 1.0)
 
 [node name="Skeleton6" parent="." instance=ExtResource("13_kmspj")]
 position = Vector2(960, 144)
-external_frame_base = "res://sprites/0x72_DungeonTilesetii_v1.7/frames/muddy_anim_f"
+external_frame_base = "res://sprites/0x72_DungeonTilesetII_v1.7/frames/muddy_anim_f"
 external_frame_count = 2
 external_frame_speed = 4.0
 enemy_sprite_offset_y = 6.0
@@ -268,9 +268,9 @@ position = Vector2(1060, 130)
 level_id = "forest"
 max_hp = 3
 tint = Color(0.90, 1.05, 0.85, 1.0)
-external_run_base = "res://sprites/0x72_DungeonTilesetii_v1.7/frames/ogre_run_anim_f"
+external_run_base = "res://sprites/0x72_DungeonTilesetII_v1.7/frames/ogre_run_anim_f"
 external_run_count = 4
-external_idle_base = "res://sprites/0x72_DungeonTilesetii_v1.7/frames/ogre_idle_anim_f"
+external_idle_base = "res://sprites/0x72_DungeonTilesetII_v1.7/frames/ogre_idle_anim_f"
 external_idle_count = 4
 external_frame_speed = 6.0
 

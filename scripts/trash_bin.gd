@@ -1,9 +1,9 @@
 extends Area2D
 
 const SPRITE_BY_TYPE := {
-	"plastic": "res://sprites/Items/bin_plastic.png",
-	"organic": "res://sprites/Items/bin_organic.png",
-	"glass":   "res://sprites/Items/bin_glass.png",
+	"plastic": preload("res://sprites/Items/bin_plastic.png"),
+	"organic": preload("res://sprites/Items/bin_organic.png"),
+	"glass":   preload("res://sprites/Items/bin_glass.png"),
 }
 
 @export var accepts: String = "plastic"
@@ -24,10 +24,7 @@ func _ready() -> void:
 	label.modulate = tint
 
 func _apply_sprite() -> void:
-	var path: String = SPRITE_BY_TYPE.get(accepts, "")
-	if path == "" or not ResourceLoader.exists(path):
-		return
-	var tex: Texture2D = load(path) as Texture2D
+	var tex: Texture2D = SPRITE_BY_TYPE.get(accepts, null)
 	if tex == null:
 		return
 	sprite.texture = tex

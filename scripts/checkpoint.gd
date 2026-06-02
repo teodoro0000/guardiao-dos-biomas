@@ -1,10 +1,10 @@
 extends Area2D
 
 const BANNER_BY_COLOR := {
-	"green":  "res://sprites/0x72_DungeonTilesetii_v1.7/frames/wall_banner_green.png",
-	"blue":   "res://sprites/0x72_DungeonTilesetii_v1.7/frames/wall_banner_blue.png",
-	"red":    "res://sprites/0x72_DungeonTilesetii_v1.7/frames/wall_banner_red.png",
-	"yellow": "res://sprites/0x72_DungeonTilesetii_v1.7/frames/wall_banner_yellow.png",
+	"green":  preload("res://sprites/0x72_DungeonTilesetII_v1.7/frames/wall_banner_green.png"),
+	"blue":   preload("res://sprites/0x72_DungeonTilesetII_v1.7/frames/wall_banner_blue.png"),
+	"red":    preload("res://sprites/0x72_DungeonTilesetII_v1.7/frames/wall_banner_red.png"),
+	"yellow": preload("res://sprites/0x72_DungeonTilesetII_v1.7/frames/wall_banner_yellow.png"),
 }
 
 const POLE_TOP_COLOR := {
@@ -39,10 +39,7 @@ func _ready() -> void:
 		_set_already_taken()
 
 func _apply_banner_texture() -> void:
-	var path: String = BANNER_BY_COLOR.get(banner_color, BANNER_BY_COLOR["red"])
-	if not ResourceLoader.exists(path):
-		return
-	var tex: Texture2D = load(path) as Texture2D
+	var tex: Texture2D = BANNER_BY_COLOR.get(banner_color, BANNER_BY_COLOR["red"])
 	if tex != null:
 		banner.texture = tex
 

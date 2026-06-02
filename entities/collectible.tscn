@@ -1,4 +1,4 @@
-[gd_scene format=4 uid="uid://dods0coll0001"]
+[gd_scene format=4]
 
 [ext_resource type="Script" path="res://scripts/collectible.gd" id="1_coll"]
 [ext_resource type="Texture2D" uid="uid://cysnwswt3muot" path="res://sprites/1 - Penguin/Idle (16 x 16).png" id="2_coll"]

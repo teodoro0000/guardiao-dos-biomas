@@ -1,4 +1,4 @@
-[gd_scene format=4 uid="uid://dods0cred001"]
+[gd_scene format=4]
 
 [ext_resource type="Script" path="res://scripts/credits.gd" id="1_cr"]
 

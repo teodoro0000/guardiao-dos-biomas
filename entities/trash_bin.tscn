@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=4 uid="uid://dods0bin001"]
+[gd_scene load_steps=2 format=4]
 
 [ext_resource type="Script" path="res://scripts/trash_bin.gd" id="1_bin"]
 

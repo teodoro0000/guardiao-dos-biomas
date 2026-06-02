@@ -1,8 +1,8 @@
 [gd_scene load_steps=20 format=4 uid="uid://c8yhqpob56plw"]
 
 [ext_resource type="Script" path="res://scripts/level.gd" id="0_lvl"]
-[ext_resource type="PackedScene" uid="uid://dods0trash001" path="res://entities/trash_item.tscn" id="0_trash"]
-[ext_resource type="PackedScene" uid="uid://dods0bin001" path="res://entities/trash_bin.tscn" id="0_bin"]
+[ext_resource type="PackedScene" path="res://entities/trash_item.tscn" id="0_trash"]
+[ext_resource type="PackedScene" path="res://entities/trash_bin.tscn" id="0_bin"]
 [ext_resource type="PackedScene" uid="uid://b4uyanguafauh" path="res://entities/player.tscn" id="1_bmxgx"]
 [ext_resource type="TileSet" uid="uid://ci6yocecub5y3" path="res://tiles/terrain.tres" id="2_ry6l7"]
 [ext_resource type="TileSet" uid="uid://ckf2afy4m5an6" path="res://tiles/decoration.tres" id="3_ry6l7"]
@@ -17,9 +17,9 @@
 [ext_resource type="PackedScene" uid="uid://nm82sifvd23i" path="res://entities/level_end.tscn" id="10_d18o5"]
 [ext_resource type="PackedScene" uid="uid://bes2p46skt65p" path="res://entities/skeleton.tscn" id="11_t8vtq"]
 [ext_resource type="PackedScene" uid="uid://7dkaekrflgga" path="res://entities/moving_platform.tscn" id="14_xflqb"]
-[ext_resource type="PackedScene" uid="uid://dods0boss0001" path="res://entities/boss.tscn" id="15_boss_t"]
-[ext_resource type="PackedScene" uid="uid://dods0check001" path="res://entities/checkpoint.tscn" id="16_cp_t"]
-[ext_resource type="PackedScene" uid="uid://dods0life001" path="res://entities/life_pickup.tscn" id="17_lp_t"]
+[ext_resource type="PackedScene" path="res://entities/boss.tscn" id="15_boss_t"]
+[ext_resource type="PackedScene" path="res://entities/checkpoint.tscn" id="16_cp_t"]
+[ext_resource type="PackedScene" path="res://entities/life_pickup.tscn" id="17_lp_t"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_d18o5"]
 animations = [{
@@ -210,7 +210,7 @@ shape = SubResource("RectangleShape2D_d18o5")
 
 [node name="Skeleton" parent="." instance=ExtResource("11_t8vtq")]
 position = Vector2(251, 160)
-external_frame_base = "res://sprites/0x72_DungeonTilesetii_v1.7/frames/slug_anim_f"
+external_frame_base = "res://sprites/0x72_DungeonTilesetII_v1.7/frames/slug_anim_f"
 external_frame_count = 4
 external_frame_speed = 6.0
 enemy_sprite_offset_y = 6.0
@@ -218,7 +218,7 @@ enemy_tint = Color(0.85, 0.95, 1.10, 1.0)
 
 [node name="Skeleton2" parent="." instance=ExtResource("11_t8vtq")]
 position = Vector2(540, 160)
-external_frame_base = "res://sprites/0x72_DungeonTilesetii_v1.7/frames/slug_anim_f"
+external_frame_base = "res://sprites/0x72_DungeonTilesetII_v1.7/frames/slug_anim_f"
 external_frame_count = 4
 external_frame_speed = 6.0
 enemy_sprite_offset_y = 6.0
@@ -226,7 +226,7 @@ enemy_tint = Color(0.85, 0.95, 1.10, 1.0)
 
 [node name="Skeleton3" parent="." instance=ExtResource("11_t8vtq")]
 position = Vector2(720, 160)
-external_frame_base = "res://sprites/0x72_DungeonTilesetii_v1.7/frames/slug_anim_f"
+external_frame_base = "res://sprites/0x72_DungeonTilesetII_v1.7/frames/slug_anim_f"
 external_frame_count = 4
 external_frame_speed = 6.0
 enemy_sprite_offset_y = 6.0
@@ -234,7 +234,7 @@ enemy_tint = Color(0.85, 0.95, 1.10, 1.0)
 
 [node name="Skeleton4" parent="." instance=ExtResource("11_t8vtq")]
 position = Vector2(880, 160)
-external_frame_base = "res://sprites/0x72_DungeonTilesetii_v1.7/frames/slug_anim_f"
+external_frame_base = "res://sprites/0x72_DungeonTilesetII_v1.7/frames/slug_anim_f"
 external_frame_count = 4
 external_frame_speed = 6.0
 enemy_sprite_offset_y = 6.0
@@ -256,9 +256,9 @@ position = Vector2(1000, 140)
 level_id = "tropic"
 max_hp = 4
 tint = Color(0.85, 0.95, 1.10, 1.0)
-external_run_base = "res://sprites/0x72_DungeonTilesetii_v1.7/frames/big_zombie_run_anim_f"
+external_run_base = "res://sprites/0x72_DungeonTilesetII_v1.7/frames/big_zombie_run_anim_f"
 external_run_count = 4
-external_idle_base = "res://sprites/0x72_DungeonTilesetii_v1.7/frames/big_zombie_idle_anim_f"
+external_idle_base = "res://sprites/0x72_DungeonTilesetII_v1.7/frames/big_zombie_idle_anim_f"
 external_idle_count = 4
 external_frame_speed = 6.0
 

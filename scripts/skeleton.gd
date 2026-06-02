@@ -7,7 +7,7 @@ enum SkeletonState {
 }
 
 const SPINNING_BONE = preload("res://entities/spinning_bone.tscn")
-const KENNEY_ATLAS_PATH := "res://kenney_pixel-platformer/Tilemap/tilemap-characters_packed.png"
+const KENNEY_ATLAS: Texture2D = preload("res://kenney_pixel-platformer/Tilemap/tilemap-characters_packed.png")
 
 @export var enemy_sprite_region: Rect2 = Rect2(0, 0, 0, 0)
 @export var enemy_tint: Color = Color(1, 1, 1, 1)
@@ -44,18 +44,13 @@ func _apply_enemy_sprite() -> void:
 	_apply_kenney_atlas()
 
 func _apply_kenney_atlas() -> void:
-	if not ResourceLoader.exists(KENNEY_ATLAS_PATH):
-		return
-	var atlas: Texture2D = load(KENNEY_ATLAS_PATH)
-	if atlas == null:
-		return
 	var sf := SpriteFrames.new()
 	for anim_name in ["walk", "attack", "hurt"]:
 		sf.add_animation(anim_name)
 		sf.set_animation_loop(anim_name, anim_name == "walk")
 		sf.set_animation_speed(anim_name, 4.0 if anim_name == "walk" else 5.0)
 		var tex := AtlasTexture.new()
-		tex.atlas = atlas
+		tex.atlas = KENNEY_ATLAS
 		tex.region = enemy_sprite_region
 		tex.filter_clip = true
 		sf.add_frame(anim_name, tex)
@@ -70,14 +65,7 @@ func _apply_kenney_atlas() -> void:
 	tween.tween_property(anim, "position:y", anim.position.y, 0.4).set_trans(Tween.TRANS_SINE)
 
 func _apply_external_frames() -> void:
-	var frames: Array[Texture2D] = []
-	for i in range(external_frame_count):
-		var path: String = "%s%d.png" % [external_frame_base, i]
-		if not ResourceLoader.exists(path):
-			continue
-		var tex: Texture2D = load(path) as Texture2D
-		if tex != null:
-			frames.append(tex)
+	var frames: Array[Texture2D] = SpriteBank.get_frames(external_frame_base, external_frame_count)
 	if frames.is_empty():
 		return
 	var sf := SpriteFrames.new()

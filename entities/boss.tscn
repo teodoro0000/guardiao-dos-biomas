@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://dods0boss0001"]
+[gd_scene format=3]
 
 [ext_resource type="Script" path="res://scripts/boss.gd" id="1_boss"]
 [ext_resource type="Texture2D" uid="uid://fm3bdt2v6o3q" path="res://sprites/3 - Skeleton/Bone_Toss (32 x 32).png" id="2_atk"]

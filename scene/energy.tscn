@@ -1,16 +1,16 @@
 [gd_scene format=4 uid="uid://bphtdrbadkfca"]
 
 [ext_resource type="Script" path="res://scripts/level.gd" id="0_lvl"]
-[ext_resource type="PackedScene" uid="uid://dods0coll0001" path="res://entities/collectible.tscn" id="0_col"]
+[ext_resource type="PackedScene" path="res://entities/collectible.tscn" id="0_col"]
 [ext_resource type="PackedScene" uid="uid://b4uyanguafauh" path="res://entities/player.tscn" id="1_pl"]
 [ext_resource type="PackedScene" uid="uid://cdtr6sp6pckop" path="res://entities/camera.tscn" id="2_cam"]
 [ext_resource type="PackedScene" uid="uid://nm82sifvd23i" path="res://entities/level_end.tscn" id="3_end"]
 [ext_resource type="PackedScene" uid="uid://7dkaekrflgga" path="res://entities/moving_platform.tscn" id="4_mp"]
 [ext_resource type="PackedScene" uid="uid://bes2p46skt65p" path="res://entities/skeleton.tscn" id="5_sk"]
-[ext_resource type="PackedScene" uid="uid://dods0boss0001" path="res://entities/boss.tscn" id="6_boss_e"]
-[ext_resource type="PackedScene" uid="uid://dods0check001" path="res://entities/checkpoint.tscn" id="7_cp_e"]
-[ext_resource type="PackedScene" uid="uid://dods0life001" path="res://entities/life_pickup.tscn" id="9_lp_e"]
-[ext_resource type="Texture2D" path="res://sprites/0x72_DungeonTilesetii_v1.7/frames/floor_1.png" id="8_flr_e"]
+[ext_resource type="PackedScene" path="res://entities/boss.tscn" id="6_boss_e"]
+[ext_resource type="PackedScene" path="res://entities/checkpoint.tscn" id="7_cp_e"]
+[ext_resource type="PackedScene" path="res://entities/life_pickup.tscn" id="9_lp_e"]
+[ext_resource type="Texture2D" path="res://sprites/0x72_DungeonTilesetII_v1.7/frames/floor_1.png" id="8_flr_e"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_floor"]
 size = Vector2(72, 8)
@@ -938,7 +938,7 @@ require_boss_defeated = true
 
 [node name="Skeleton1" parent="." instance=ExtResource("5_sk")]
 position = Vector2(140, 130)
-external_frame_base = "res://sprites/0x72_DungeonTilesetii_v1.7/frames/chort_idle_anim_f"
+external_frame_base = "res://sprites/0x72_DungeonTilesetII_v1.7/frames/chort_idle_anim_f"
 external_frame_count = 4
 external_frame_speed = 6.0
 enemy_sprite_offset_y = 4.0
@@ -946,7 +946,7 @@ enemy_tint = Color(1.10, 0.85, 0.80, 1.0)
 
 [node name="Skeleton2" parent="." instance=ExtResource("5_sk")]
 position = Vector2(280, 95)
-external_frame_base = "res://sprites/0x72_DungeonTilesetii_v1.7/frames/chort_idle_anim_f"
+external_frame_base = "res://sprites/0x72_DungeonTilesetII_v1.7/frames/chort_idle_anim_f"
 external_frame_count = 4
 external_frame_speed = 6.0
 enemy_sprite_offset_y = 4.0
@@ -964,9 +964,9 @@ position = Vector2(530, 122)
 level_id = "energy"
 max_hp = 5
 tint = Color(1.05, 0.90, 0.85, 1.0)
-external_run_base = "res://sprites/0x72_DungeonTilesetii_v1.7/frames/big_demon_run_anim_f"
+external_run_base = "res://sprites/0x72_DungeonTilesetII_v1.7/frames/big_demon_run_anim_f"
 external_run_count = 4
-external_idle_base = "res://sprites/0x72_DungeonTilesetii_v1.7/frames/big_demon_idle_anim_f"
+external_idle_base = "res://sprites/0x72_DungeonTilesetII_v1.7/frames/big_demon_idle_anim_f"
 external_idle_count = 4
 external_frame_speed = 6.0
 
