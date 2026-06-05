@@ -3,6 +3,10 @@
 > Um jogo de plataforma 2D sobre os Objetivos de Desenvolvimento Sustentável (ODS) da ONU.
 > Desenvolvido para o Dia do Meio Ambiente — **FATEC Jacareí · DSM**.
 
+<p align="center">
+  <img src="splash.png" alt="Guardião dos Biomas — tela de abertura" width="720" />
+</p>
+
 ---
 
 ## 🎯 Sobre o projeto
@@ -10,6 +14,29 @@
 **Guardião dos Biomas** é um jogo educativo onde o jogador escolhe um dos quatro Guardiões — cada um representando um bioma brasileiro — e atravessa quatro fases que ilustram os ODS **15** (Vida Terrestre), **14** (Vida na Água), **7** (Energia Limpa) e **13** (Ação Climática).
 
 Cada fase conta uma microhistória ambiental, com inimigos que personificam ameaças (poluição, desmatamento, indústria suja) e um chefe que precisa ser derrotado pra desbloquear o portal. Após as três jornadas, o Guardião enfrenta um **super boss final** — o "vazio" — que representa a indiferença coletiva.
+
+<p align="center">
+  <img src="assets/screenshot-menu.png" alt="Menu principal" width="420" />
+  <img src="assets/screenshot-character-select.png" alt="Seleção de Guardião" width="420" />
+</p>
+
+---
+
+## 🌱 Criatividade & Sustentabilidade — os pilares do desafio
+
+O projeto foi construído sobre os dois pilares propostos no desafio do Dia do Meio Ambiente da FATEC Jacareí:
+
+### Sustentabilidade
+- **Cada fase é um ODS da ONU**: Floresta (ODS 15 · Vida Terrestre), Oceano (ODS 14 · Vida na Água), Cidade (ODS 7 · Energia Limpa) e Coração do Mundo (ODS 13 · Ação Climática).
+- **Cada Guardião personifica um bioma brasileiro** — Mata Atlântica, Manguezal, Cerrado e Caatinga — transformando os jogadores em defensores simbólicos do que precisa ser preservado.
+- **Os inimigos são metáforas das ameaças reais**: poluição, desmatamento, indústria suja. O super boss final — o "vazio" — representa a indiferença coletiva diante da crise climática.
+- **O ataque é uma semente**: a única arma do jogador é plantar — o gesto mais simples e mais sustentável que existe.
+
+### Criatividade
+- **Gamificação como linguagem**: traduzir os ODS, que normalmente vivem em relatórios e cartilhas, para uma linguagem que adolescentes e crianças realmente consomem — pixel art, plataforma 2D, trilha sonora, chefes.
+- **Narrativa simbólica**: o jogador não "lê" sobre meio ambiente — ele *encarna* um Guardião, atravessa quatro biomas, derrota o que ameaça cada um e enfrenta o vazio coletivo no final.
+- **Mecânicas que reforçam a mensagem**: pulo duplo, wall slide, combo timer, sementes como projétil, checkpoints como bandeiras coloridas — design feito pra ser divertido e, ao mesmo tempo, fazer sentido com o tema.
+- **Direção de arte coesa**: dark-first, tipografia pixel (Press Start 2P), paleta por bioma, splash editorial. O jogo se apresenta com identidade própria, não como mais um platformer genérico.
 
 ---
 
@@ -55,6 +82,33 @@ Menu Principal
                       └── Coração do Mundo — Super Boss (ODS 13)
                            └── Vitória + Créditos
 ```
+
+---
+
+## 📸 As 4 fases
+
+<table>
+  <tr>
+    <td align="center">
+      <img src="assets/screenshot-ods15-floresta.png" alt="ODS 15 — Floresta" width="420" /><br/>
+      <sub><b>🌳 ODS 15 · Vida Terrestre</b> — Floresta</sub>
+    </td>
+    <td align="center">
+      <img src="assets/screenshot-ods14-oceano.png" alt="ODS 14 — Oceano" width="420" /><br/>
+      <sub><b>🌊 ODS 14 · Vida na Água</b> — Oceano</sub>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <img src="assets/screenshot-ods7-cidade.png" alt="ODS 7 — Cidade" width="420" /><br/>
+      <sub><b>⚡ ODS 7 · Energia Limpa</b> — Cidade</sub>
+    </td>
+    <td align="center">
+      <img src="assets/screenshot-ods13-boss.png" alt="ODS 13 — Super Boss" width="420" /><br/>
+      <sub><b>🌡️ ODS 13 · Ação Climática</b> — Coração do Mundo (Super Boss)</sub>
+    </td>
+  </tr>
+</table>
 
 ---
 

@@ -40,8 +40,10 @@ var carried_trash: Node = null
 
 const PROJECTILE = preload("res://entities/player_projectile.tscn")
 const ATTACK_COOLDOWN := 0.35
+const RESPAWN_INVULN_TIME := 3.0
 var _facing: int = 1
 var _attack_t: float = 0.0
+var _invuln_t: float = 0.0
 
 func _ready() -> void:
 	_apply_character_modifiers()
@@ -54,6 +56,13 @@ func _apply_checkpoint_respawn() -> void:
 	if lvl == "" or not GameState.has_checkpoint(lvl):
 		return
 	global_position = GameState.get_checkpoint(lvl)
+	_start_respawn_invulnerability()
+
+func _start_respawn_invulnerability() -> void:
+	_invuln_t = RESPAWN_INVULN_TIME
+	var tween := create_tween().set_loops(int(RESPAWN_INVULN_TIME / 0.2))
+	tween.tween_property(anim, "modulate:a", 0.35, 0.1)
+	tween.tween_property(anim, "modulate:a", 1.0, 0.1)
 
 func _apply_character_sprite() -> void:
 	var sf: SpriteFrames = GameState.get_character_sprite_frames(GameState.selected_character)
@@ -70,6 +79,9 @@ func _apply_character_modifiers() -> void:
 
 func _physics_process(delta: float) -> void:
 	_attack_t = max(0.0, _attack_t - delta)
+	_invuln_t = max(0.0, _invuln_t - delta)
+	if _invuln_t == 0.0 and anim.modulate.a != 1.0:
+		anim.modulate.a = 1.0
 	if status != PlayerState.hurt and Input.is_action_just_pressed("attack") and _attack_t <= 0.0:
 		_fire_projectile()
 
@@ -335,9 +347,11 @@ func _on_hitbox_area_entered(area: Area2D) -> void:
 		hit_enemy(area)
 	elif area.is_in_group("LethalArea"):
 		hit_lethal_area()
-		
+
 func _on_hitbox_body_entered(body: Node2D) -> void:
 	if body.is_in_group("LethalArea"):
+		if _invuln_t > 0.0:
+			return
 		go_to_hurt_state()
 	elif body.is_in_group("Water"):
 		go_to_swimming_state()
@@ -347,11 +361,16 @@ func hit_enemy(area: Area2D):
 		# inimigo morre
 		area.get_parent().take_damage()
 		go_to_jump_state()
+	elif _invuln_t > 0.0:
+		# respawn invulnerability — ignore damage
+		return
 	else:
 		# player morre
 		go_to_hurt_state()
-	
+
 func hit_lethal_area():
+	if _invuln_t > 0.0:
+		return
 	go_to_hurt_state()
 
 func _on_reload_timer_timeout() -> void:

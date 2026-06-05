@@ -13,3 +13,6 @@ export_presets.cfg
 .mono/
 data_*/
 mono_crash.*.json
+
+# Rascunhos internos (aguardando aprovação dos professores)
+LINKEDIN_POST.md
